@@ -259,6 +259,8 @@ onBeforeUnmount(() => {
 .brand-text strong { font-size: 14px; letter-spacing: 0.5px; }
 .brand-text span { font-size: 11px; color: #8fa2bd; }
 .menu-scroll { flex: 1; }
+/* 去掉 Element Plus el-menu 默认的 1px 右边框，避免深色侧栏右侧出现一条浅色分隔线 */
+.app-aside :deep(.el-menu) { border-right: none; }
 .app-body { background: #f4f6fa; }
 .app-header { height: 60px; background: #fff; border-bottom: 1px solid #e8ecf3; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
 .header-left { display: flex; align-items: center; gap: 12px; }
