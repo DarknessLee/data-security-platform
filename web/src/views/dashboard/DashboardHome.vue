@@ -53,7 +53,9 @@
               <div class="cell-main"><span class="title">{{ row.username }}</span><span class="sub mono">{{ row.ip ?? '-' }}</span></div>
             </template>
           </el-table-column>
-          <el-table-column prop="occurred_at" label="发生时间" width="165" />
+          <el-table-column prop="occurred_at" label="发生时间" width="165">
+            <template #default="{ row }">{{ fmtRelative(row.occurred_at) }}</template>
+          </el-table-column>
         </el-table>
       </el-card>
 
