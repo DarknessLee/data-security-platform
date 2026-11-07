@@ -9,6 +9,10 @@ web/dist/
 .runtime/*
 !.runtime/.gitkeep
 
+# 各成员临时脚本目录
+.tmp/
+.tmp-*/
+
 # 截图与报告由 scripts/screenshots.mjs 生成，纳入交付
 !docs/screenshots/
 

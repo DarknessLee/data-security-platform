@@ -17,7 +17,8 @@ export function errorHandler(err: unknown, req: Request, res: Response, _next: N
     res.status(err.status).json({ code: err.status, message: err.message });
     return;
   }
-  const e = err as { message?: string; sql?: string };
+  const e = err as { message?: string; sql?: string; stack?: string };
   console.error(`[api] 未处理异常 ${req.method} ${req.originalUrl}:`, e?.message);
+  if (e?.sql) console.error('[api] 出错 SQL:', e.sql.replace(/\s+/g, ' ').slice(0, 500));
   res.status(500).json({ code: 500, message: '服务内部异常，请稍后重试或联系运维' });
 }

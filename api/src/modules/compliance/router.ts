@@ -125,8 +125,8 @@ interface MaskingRecord {
 }
 
 interface BatchStat {
-  batchNo: string;
-  checkedAt: string | null;
+  batch_no: string;
+  checked_at: string | null;
   total: number;
   passed: number;
   warning: number;
@@ -335,8 +335,8 @@ function toBatchStat(row: {
   const total = intOf(row.total);
   const passed = intOf(row.passed);
   return {
-    batchNo: row.batch_no,
-    checkedAt: dtText(row.checked_at),
+    batch_no: row.batch_no,
+    checked_at: dtText(row.checked_at),
     total,
     passed,
     warning: intOf(row.warning),
@@ -532,7 +532,7 @@ complianceRouter.get('/overview', READ, async (_req, res) => {
       ruleTotal: intOf(ruleTotal?.c),
       ruleEnabled: intOf(ruleEnabled?.c),
       checkTotal: intOf(checkTotal?.c),
-      latestBatchNo: latest?.batchNo ?? null,
+      latestBatchNo: latest?.batch_no ?? null,
       latestRate: latest?.rate ?? 0,
       rectifyTotal,
       rectifyOpen: intOf(rectify?.open),
@@ -1091,6 +1091,21 @@ const APPROVAL_SELECT = `SELECT s.*, a.asset_name, a.asset_code, a.data_level AS
   LEFT JOIN sys_user u ON u.id = s.applicant_id
   LEFT JOIN sys_dept d ON d.id = u.dept_id`;
 
+/** 共享申请可选的资产列表（供提交申请下拉使用，按敏感级别排序） */
+complianceRouter.get('/approvals/assets', READ, async (_req, res) => {
+  const rows = await query<{ id: number; asset_name: string; asset_code: string; data_level: string }>(
+    `SELECT id, asset_name, asset_code, data_level FROM data_asset
+      ORDER BY FIELD(data_level, '绝密', '机密', '内部', '公开'), id
+      LIMIT 200`,
+  );
+  ok(res, rows.map((r) => ({
+    id: intOf(r.id),
+    asset_name: r.asset_name,
+    asset_code: r.asset_code,
+    data_level: r.data_level,
+  })));
+});
+
 complianceRouter.get('/approvals', READ, async (req, res) => {
   const p = parsePagination(req.query);
   const status = strOrUndef(req.query.status);
@@ -1241,9 +1256,9 @@ complianceRouter.put('/approvals/:id/approve', WRITE, async (req, res) => {
 complianceRouter.get('/report', READ, async (req, res) => {
   const requested = strOrUndef(req.query.batchNo);
   const batches = await loadBatches();
-  const batchNo = requested ?? batches[0]?.batchNo ?? null;
+  const batchNo = requested ?? batches[0]?.batch_no ?? null;
   if (!batchNo) throw new ApiError(404, '暂无合规检查批次，无法生成报告');
-  const current = batches.find((b) => b.batchNo === batchNo) ?? (await loadBatchStat(batchNo));
+  const current = batches.find((b) => b.batch_no === batchNo) ?? (await loadBatchStat(batchNo));
   if (!current) throw new ApiError(404, `检查批次 ${batchNo} 不存在`);
 
   const groupSql = `SELECT r.__DIM__ AS name, COUNT(*) AS total,

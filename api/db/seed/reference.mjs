@@ -194,6 +194,7 @@ export async function seedReference(conn) {
   // 菜单树 + 角色菜单授权
   let menuSort = 0;
   const moduleMenuIds = {};
+  const moduleChildMenuIds = {};
   for (const m of MENUS) {
     menuSort += 1;
     const parentId = 0;
@@ -202,13 +203,15 @@ export async function seedReference(conn) {
       [parentId, m.name, m.path, m.icon, m.code || null, '目录', menuSort * 10],
     );
     moduleMenuIds[m.code || m.name] = r.insertId;
+    moduleChildMenuIds[m.code || m.name] = [];
     let childSort = 0;
     for (const c of m.children) {
       childSort += 1;
-      await conn.query(
+      const [cr] = await conn.query(
         'INSERT INTO sys_menu (parent_id, menu_name, path, icon, permission_code, menu_type, sort, visible) VALUES (?,?,?,?,?,?,?,1)',
         [r.insertId, c.name, c.path, c.icon || 'Menu', null, '菜单', childSort],
       );
+      moduleChildMenuIds[m.code || m.name].push(cr.insertId);
     }
   }
 
@@ -216,9 +219,17 @@ export async function seedReference(conn) {
     for (const [moduleCode, flags] of Object.entries(perms)) {
       const menuId = moduleMenuIds[moduleCode];
       if (!menuId) continue;
+      const read = flags.includes('r') ? 1 : 0;
+      const write = flags.includes('w') ? 1 : 0;
       await conn.query('INSERT INTO sys_role_menu (role_id, menu_id, perm_read, perm_write) VALUES (?,?,?,?)', [
-        roleIdByCode[roleCode], menuId, flags.includes('r') ? 1 : 0, flags.includes('w') ? 1 : 0,
+        roleIdByCode[roleCode], menuId, read, write,
       ]);
+      // 子菜单必须随模块一起授权，否则登录返回的菜单树 children 为空、侧边栏没有二级入口
+      for (const childId of moduleChildMenuIds[moduleCode] || []) {
+        await conn.query('INSERT INTO sys_role_menu (role_id, menu_id, perm_read, perm_write) VALUES (?,?,?,?)', [
+          roleIdByCode[roleCode], childId, read, write,
+        ]);
+      }
     }
   }
 

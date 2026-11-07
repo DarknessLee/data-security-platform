@@ -8,6 +8,8 @@ export interface PageMeta {
   total: number;
   page: number;
   pageSize: number;
+  /** 允许各模块追加统计字段（如 totalPages、batchNo 等） */
+  [key: string]: unknown;
 }
 
 export function parsePagination(query: Record<string, unknown>, defaultSize = 10, maxSize = 100): PageParams {

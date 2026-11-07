@@ -97,7 +97,7 @@ async function main() {
 
   // 登录
   await page.fill('input[placeholder="请输入用户名"]', 'admin');
-  await page.fill('input[placeholder="请输入密码"]', 'Admin@2026');
+  await page.fill('input[placeholder="请输入登录密码"]', 'Admin@2026');
   await page.click('button:has-text("登 录"), button:has-text("登录")');
   await page.waitForURL('**/dashboard', { timeout: 20_000 });
   await page.waitForLoadState('networkidle', { timeout: 20_000 }).catch(() => {});

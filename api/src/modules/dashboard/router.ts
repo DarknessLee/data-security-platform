@@ -9,15 +9,20 @@ export const dashboardRouter = Router();
 
 interface LevelRow { data_level: string; c: number }
 
-async function loadOverview(userId: number, scopeSql: string, scopeParams: unknown[]): Promise<Record<string, unknown>> {
+async function loadOverview(
+  userId: number,
+  plainScope: string,
+  aliasedScope: string,
+  scopeParams: unknown[],
+): Promise<Record<string, unknown>> {
   const totalAssets = await queryOne<{ c: number }>('SELECT COUNT(*) AS c FROM data_asset');
   const sensitive = await queryOne<{ c: number }>("SELECT COUNT(*) AS c FROM data_asset WHERE data_level IN ('机密','绝密')");
   const openRisk = await queryOne<{ c: number }>(
-    `SELECT COUNT(*) AS c FROM risk_event WHERE status IN ('待处置','处置中') ${scopeSql}`,
+    `SELECT COUNT(*) AS c FROM risk_event WHERE status IN ('待处置','处置中') ${plainScope}`,
     scopeParams,
   );
   const urgentRisk = await queryOne<{ c: number }>(
-    `SELECT COUNT(*) AS c FROM risk_event WHERE level IN ('高','紧急') AND status IN ('待处置','处置中') ${scopeSql}`,
+    `SELECT COUNT(*) AS c FROM risk_event WHERE level IN ('高','紧急') AND status IN ('待处置','处置中') ${plainScope}`,
     scopeParams,
   );
   const pendingTickets = await queryOne<{ c: number }>("SELECT COUNT(*) AS c FROM service_ticket WHERE status IN ('待受理','处理中','待验证')");
@@ -52,7 +57,7 @@ async function loadOverview(userId: number, scopeSql: string, scopeParams: unkno
   const assetStage = stageOrder.map((s) => ({ name: s, value: Number(stages.find((x) => x.lifecycle_stage === s)?.c ?? 0) }));
 
   const riskLevel = await query<{ level: string; c: number }>(
-    `SELECT level, COUNT(*) AS c FROM risk_event WHERE 1 = 1 ${scopeSql} GROUP BY level`,
+    `SELECT level, COUNT(*) AS c FROM risk_event WHERE 1 = 1 ${plainScope} GROUP BY level`,
     scopeParams,
   );
   const riskLevelDist = ['低', '中', '高', '紧急'].map((level) => ({
@@ -62,7 +67,7 @@ async function loadOverview(userId: number, scopeSql: string, scopeParams: unkno
 
   const trendRows = await query<{ d: string; total: number; high: number }>(
     `SELECT DATE_FORMAT(occurred_at, '%Y-%m-%d') AS d, COUNT(*) AS total, SUM(level IN ('高','紧急')) AS high
-       FROM risk_event WHERE occurred_at >= DATE_SUB(CURDATE(), INTERVAL 6 DAY) ${scopeSql}
+       FROM risk_event WHERE occurred_at >= DATE_SUB(CURDATE(), INTERVAL 6 DAY) ${plainScope}
       GROUP BY DATE_FORMAT(occurred_at, '%Y-%m-%d') ORDER BY d`,
     scopeParams,
   );
@@ -88,7 +93,7 @@ async function loadOverview(userId: number, scopeSql: string, scopeParams: unkno
     `SELECT e.id, e.event_no, e.event_type, e.level, e.status, e.username, e.ip, e.occurred_at,
             a.asset_name
        FROM risk_event e LEFT JOIN data_asset a ON a.id = e.asset_id
-      WHERE 1 = 1 ${scopeSql.replace(/\be\./g, 'e.')}
+      WHERE 1 = 1 ${aliasedScope}
       ORDER BY FIELD(e.level, '紧急', '高', '中', '低'), e.occurred_at DESC LIMIT 6`,
     scopeParams,
   );
@@ -147,8 +152,12 @@ async function loadOverview(userId: number, scopeSql: string, scopeParams: unkno
 dashboardRouter.get('/overview', authenticate, async (req, res) => {
   const user = currentUser(req);
   const scoped = !(user.roleCodes.includes('SUPER_ADMIN') || user.dataScope === 'ALL');
-  const scopeSql = scoped ? 'AND e.dept_id = ?' : '';
-  const scopeParams = scoped ? [user.deptId] : [];
-  const data = await cached(`dashboard:overview:${scoped ? user.deptId : 'all'}`, 20, () => loadOverview(user.id, scopeSql, scopeParams));
+  const bySelf = scoped && user.dataScope === 'SELF';
+  // 注意：risk_event 的独立查询没有表别名，join 查询用 e. 前缀，两者必须分开拼，否则会报 Unknown column 'e.dept_id'
+  const plainScope = !scoped ? '' : bySelf ? 'AND username = ?' : 'AND dept_id = ?';
+  const aliasedScope = !scoped ? '' : bySelf ? 'AND e.username = ?' : 'AND e.dept_id = ?';
+  const scopeParams: unknown[] = !scoped ? [] : [bySelf ? user.username : user.deptId];
+  const cacheKey = !scoped ? 'all' : bySelf ? `self-${user.username}` : `dept-${user.deptId}`;
+  const data = await cached(`dashboard:overview:${cacheKey}`, 20, () => loadOverview(user.id, plainScope, aliasedScope, scopeParams));
   ok(res, data);
 });

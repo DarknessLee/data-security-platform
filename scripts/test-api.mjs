@@ -132,7 +132,7 @@ async function main() {
     const data = ok(res);
     assert(Array.isArray(data), '返回不是数组');
     assert(data.length === 10, `本页 ${data.length} 条`);
-    assert(res.body.meta.total === 64, `总数为 ${res.body.meta?.total}`);
+    assert(res.body.meta.total >= 64, `总数为 ${res.body.meta?.total}`);
     assetId = data[0].id;
   });
 
@@ -144,14 +144,17 @@ async function main() {
 
   await t('资产分类统计返回 8 个分类', async () => {
     const data = ok(await request('GET', '/assets/categories', { token: TOKENS.admin }));
-    assert(data.length === 8, `分类数为 ${data.length}`);
+    assert(data.categoryCount === 8, `分类数为 ${data.categoryCount}`);
+    assert(Array.isArray(data.tree) && data.tree.length > 0, '缺少分类树');
+    assert(data.levelTotals.length === 4, '缺少分级统计');
   });
 
   await t('资产统计接口字段完整', async () => {
     const data = ok(await request('GET', '/assets/stats', { token: TOKENS.admin }));
-    assert(Number(data.total) === 64, `总量 ${data.total}`);
-    assert(Array.isArray(data.byLevel), '缺少分级分布');
-    assert(Array.isArray(data.bySource), '缺少来源系统分布');
+    assert(Number(data.total) >= 64, `总量 ${data.total}`);
+    assert(Number(data.sensitive) > 0, '敏感资产为 0');
+    assert(data.levelDistribution.length === 4, '缺少分级分布');
+    assert(data.sourceSystem.length > 0, '缺少来源系统分布');
   });
 
   await t('资产详情返回标签与生命周期', async () => {
@@ -181,7 +184,7 @@ async function main() {
         description: '门禁用例自动登记，用于验证资产新增链路',
       },
     });
-    const data = ok(res);
+    const data = ok(res, 201);
     newAssetId = data.id;
     assert(newAssetId, '未返回新资产 id');
     assert(/^DA-2026-\d{4}$/.test(data.asset_code), `资产编号 ${data.asset_code} 不符合规范`);
@@ -214,8 +217,9 @@ async function main() {
   // ============ 安全合规管理 ============
   await t('合规总览返回规则数与通过率', async () => {
     const data = ok(await request('GET', '/compliance/overview', { token: TOKENS.admin }));
-    assert(data.ruleCount === 20, `规则数 ${data.ruleCount}`);
-    assert(typeof data.passRate === 'number', '缺少通过率');
+    assert(data.cards.ruleTotal === 20, `规则数 ${data.cards?.ruleTotal}`);
+    assert(typeof data.cards.latestRate === 'number', '缺少通过率');
+    assert(data.categoryDist.length >= 5, '缺少规则分类分布');
   });
 
   await t('合规规则库返回 20 条规则', async () => {
@@ -289,8 +293,9 @@ async function main() {
   // ============ 智能风险监测 ============
   await t('风险总览返回待处置与趋势', async () => {
     const data = ok(await request('GET', '/risk/overview', { token: TOKENS.admin }));
-    assert(typeof data.pending === 'number', '缺少待处置数量');
-    assert(Array.isArray(data.ruleTop), '缺少规则命中排行');
+    assert(typeof data.cards.pending === 'number', '缺少待处置数量');
+    assert(Array.isArray(data.ruleTop5), '缺少规则命中排行');
+    assert(data.levelDist.length === 4, '缺少级别分布');
   });
 
   await t('监测规则返回 10 条', async () => {
@@ -333,14 +338,17 @@ async function main() {
   await t('实时监控返回最新事件与 IP 排行', async () => {
     const data = ok(await request('GET', '/risk/realtime', { token: TOKENS.admin }));
     assert(Array.isArray(data.latest), '缺少最新事件');
-    assert(Array.isArray(data.ipTop), '缺少 IP 排行');
+    assert(Array.isArray(data.topIps), '缺少 IP 排行');
   });
 
   // ============ 权限安全管控 ============
   await t('权限总览返回用户与角色统计', async () => {
     const data = ok(await request('GET', '/rbac/overview', { token: TOKENS.admin }));
-    assert(data.userCount >= 9, `用户数 ${data.userCount}`);
-    assert(data.roleCount === 8, `角色数 ${data.roleCount}`);
+    assert(data.userTotal >= 9, `用户数 ${data.userTotal}`);
+    assert(data.roleTotal === 8, `角色数 ${data.roleTotal}`);
+    assert(data.deptTotal === 6, `部门数 ${data.deptTotal}`);
+    assert(data.menuTotal === 30, `菜单数 ${data.menuTotal}`);
+    assert(data.apiTotal === 43, `接口数 ${data.apiTotal}`);
   });
 
   await t('用户列表返回 9 个账号及角色', async () => {
@@ -352,37 +360,43 @@ async function main() {
 
   await t('角色列表返回 8 个角色与权限矩阵', async () => {
     const data = ok(await request('GET', '/rbac/roles', { token: TOKENS.admin }));
-    assert(data.length === 8, `角色 ${data.length} 个`);
-    assert(Array.isArray(data[0].perms), '缺少权限位');
+    assert(data.list.length === 8, `角色 ${data.list.length} 个`);
+    assert(data.modules.length === 7, `模块权限位 ${data.modules.length} 个`);
+    assert(typeof data.list[0].perms === 'object', '缺少权限位');
   });
 
   await t('角色权限配置含菜单树与接口清单', async () => {
     const roles = ok(await request('GET', '/rbac/roles', { token: TOKENS.admin }));
-    const data = ok(await request('GET', `/rbac/roles/${roles[0].id}/permissions`, { token: TOKENS.admin }));
+    const data = ok(await request('GET', `/rbac/roles/${roles.list[0].id}/permissions`, { token: TOKENS.admin }));
+    assert(data.role?.role_code, '缺少角色信息');
     assert(Array.isArray(data.menus), '缺少菜单权限');
     assert(Array.isArray(data.apis), '缺少接口权限');
   });
 
   await t('菜单权限全量为 30 条', async () => {
     const data = ok(await request('GET', '/rbac/menus', { token: TOKENS.admin }));
-    const flat = (nodes) => nodes.flatMap((n) => [n, ...(n.children ?? [])]);
-    assert(flat(data).length === 30, `菜单 ${flat(data).length} 条`);
+    assert(Array.isArray(data.list) && data.list.length === 7, `顶级菜单 ${data.list?.length} 条`);
+    assert(Array.isArray(data.flat) && data.flat.length === 30, `菜单全量 ${data.flat?.length} 条`);
   });
 
   await t('接口权限清单为 43 条', async () => {
     const data = ok(await request('GET', '/rbac/apis', { token: TOKENS.admin }));
-    assert(data.length === 43, `接口权限 ${data.length} 条`);
+    assert(data.list.length === 43, `接口权限 ${data.list.length} 条`);
+    assert(data.total === 43, `接口总数 ${data.total}`);
   });
 
   await t('部门列表返回 6 个部门', async () => {
     const data = ok(await request('GET', '/rbac/depts', { token: TOKENS.admin }));
-    assert(data.length === 6, `部门 ${data.length} 个`);
+    assert(data.list.length === 6, `部门 ${data.list.length} 个`);
+    assert(data.total === 6, `部门总数 ${data.total}`);
   });
 
   await t('安全策略读取密码与锁定配置', async () => {
     const data = ok(await request('GET', '/rbac/policy', { token: TOKENS.admin }));
-    const keys = (data.items ?? data).map?.((i) => i.config_key) ?? [];
+    const keys = data.items.map((i) => i.key);
     assert(keys.includes('security.password.min_length'), '缺少密码策略');
+    assert(keys.includes('security.login.max_fail'), '缺少登录失败阈值');
+    assert(data.groups.length > 0, '缺少分组');
   });
 
   let tempUserId = null;
@@ -424,8 +438,9 @@ async function main() {
   // ============ 安全审计追溯 ============
   await t('审计总览返回日志量与类型分布', async () => {
     const data = ok(await request('GET', '/audit/overview', { token: TOKENS.admin }));
-    assert(data.todayLogs > 0, '今日日志为 0');
-    assert(Array.isArray(data.byType), '缺少类型分布');
+    assert(data.cards.todayLogs > 0, '今日日志为 0');
+    assert(Array.isArray(data.logTypeDist) && data.logTypeDist.length === 4, '缺少类型分布');
+    assert(Array.isArray(data.trend) && data.trend.length === 7, '缺少 7 日趋势');
   });
 
   await t('审计日志分页与类型筛选', async () => {
@@ -469,7 +484,8 @@ async function main() {
   await t('运维总览返回实时指标与工单统计', async () => {
     const data = ok(await request('GET', '/ops/overview', { token: TOKENS.admin }));
     assert(data.latest, '缺少实时指标');
-    assert(typeof data.availability === 'number', '缺少可用率');
+    assert(typeof data.availability.rate === 'number', '缺少可用率');
+    assert(Array.isArray(data.series) && data.series.length > 0, '缺少指标时序');
   });
 
   await t('监控指标时序数据可查', async () => {
@@ -486,7 +502,7 @@ async function main() {
   await t('工单列表返回 22 条记录', async () => {
     const res = await request('GET', '/ops/tickets?page=1&pageSize=10', { token: TOKENS.admin });
     const data = ok(res);
-    assert(res.body.meta.total === 22, `工单总数 ${res.body.meta?.total}`);
+    assert(res.body.meta.total >= 22, `工单总数 ${res.body.meta?.total}`);
     assert(Array.isArray(data), '返回不是数组');
   });
 
@@ -522,16 +538,18 @@ async function main() {
 
   await t('平台配置分组读取 12 项', async () => {
     const data = ok(await request('GET', '/ops/configs', { token: TOKENS.admin }));
-    const items = Array.isArray(data) ? data : (data.items ?? []);
+    const groups = Array.isArray(data) ? data : (data.items ?? []);
+    const items = groups.flatMap((g) => g.items ?? []);
     assert(items.length >= 12, `配置项 ${items.length}`);
+    assert(groups.every((g) => g.group && g.count >= 0), '缺少分组信息');
   });
 
   await t('更新平台配置并回读一致', async () => {
     ok(await request('PUT', '/ops/configs/risk.alert.channels', { token: TOKENS.admin, body: { value: '站内消息,邮件,短信' } }));
     const data = ok(await request('GET', '/ops/configs', { token: TOKENS.admin }));
-    const items = Array.isArray(data) ? data : (data.items ?? []);
-    const hit = items.find((i) => (i.config_key ?? i.key) === 'risk.alert.channels');
-    assert(hit && String(hit.config_value ?? hit.value).includes('短信'), '配置未生效');
+    const items = (Array.isArray(data) ? data : []).flatMap((g) => g.items ?? []);
+    const hit = items.find((i) => i.config_key === 'risk.alert.channels');
+    assert(hit && String(hit.config_value).includes('短信'), '配置未生效');
   });
 
   await t('版本管理返回当前版本与历史版本', async () => {

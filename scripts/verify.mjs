@@ -14,12 +14,12 @@ const started = Date.now();
 const results = [];
 
 const STEPS = [
-  { key: 'docker:up', label: '容器启动', cmd: 'node', argv: ['scripts/docker.mjs', 'up'], skip: args.has('--skip-docker') },
+  { key: 'docker:up', label: '容器启动', cmd: 'node', argv: ['scripts/docker.mjs', 'up'], skip: args.has('--skip-docker'), allowNoResult: true },
   { key: 'db:init', label: '数据库初始化（可重放种子）', cmd: 'node', argv: ['api/db/init.mjs'] },
   { key: 'db:validate', label: '数据契约校验', cmd: 'node', argv: ['api/db/validate.mjs'] },
   { key: 'build', label: '编译构建（API tsc + Web vue-tsc/vite）', cmd: 'npm', argv: ['run', 'build'], shell: true },
   { key: 'test:api', label: 'API 门禁', cmd: 'node', argv: ['scripts/test-api.mjs'] },
-  { key: 'test:e2e', label: 'E2E 门禁', cmd: 'npx', argv: ['playwright', 'test', '-c', 'web/playwright.config.ts'], shell: true, skip: args.has('--skip-e2e') },
+  { key: 'test:e2e', label: 'E2E 门禁', cmd: 'npx', argv: ['playwright', 'test', '-c', 'web/playwright.config.ts'], shell: true, skip: args.has('--skip-e2e'), allowNoResult: true },
   { key: 'check:docs', label: '文档门禁', cmd: 'node', argv: ['scripts/check-docs.mjs'] },
 ];
 
@@ -49,13 +49,15 @@ function runStep(step) {
     if (tail.length > 40) tail.shift();
   }
   const resultLine = lines.filter((l) => l.startsWith('RESULT=')).pop();
-  const passed = res.status === 0 && resultLine && !resultLine.startsWith('RESULT=FAIL');
-  results.push({ key: step.key, label: step.label, status: passed ? 'PASS' : 'FAIL', detail: resultLine ?? `exit=${res.status} ${tail.slice(-3).join(' | ')}` });
-  if (!passed) {
-    console.log(`FAIL ${step.label} ${resultLine ?? `exit=${res.status}`}`);
+  const e2eSummary = /(\d+) passed/.exec(output)?.[0];
+  const ok = res.status === 0 && (resultLine ? !resultLine.startsWith('RESULT=FAIL') : Boolean(step.allowNoResult));
+  const detail = resultLine ?? (step.allowNoResult ? (e2eSummary ?? `exit=${res.status} 执行成功`) : `exit=${res.status} ${tail.slice(-3).join(' | ')}`);
+  results.push({ key: step.key, label: step.label, status: ok ? 'PASS' : 'FAIL', detail });
+  if (!ok) {
+    console.log(`FAIL ${step.label} ${detail}`);
     console.log(tail.slice(-12).join('\n'));
   } else {
-    console.log(`PASS ${step.label} ${resultLine ?? ''}`);
+    console.log(`PASS ${step.label} ${detail}`);
   }
 }
 

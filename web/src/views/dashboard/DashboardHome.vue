@@ -5,7 +5,7 @@
       <el-tag v-if="overview?.cards.latestBatchNo" type="info" effect="plain">最新合规批次 {{ overview.cards.latestBatchNo }}</el-tag>
     </PageHeader>
 
-    <div class="stat-grid">
+    <div class="stat-grid dash-stat-grid">
       <StatCard label="纳管数据资产" :value="cards.totalAssets" unit="项" icon="Coin" hint="覆盖 8 个来源业务系统" />
       <StatCard label="敏感数据资产" :value="cards.sensitiveAssets" unit="项" tone="danger" icon="Lock" hint="机密 / 绝密级资产" />
       <StatCard label="待处置风险" :value="cards.openRisk" unit="起" tone="warning" icon="Warning" :hint="`其中高危及紧急 ${cards.urgentRisk} 起`" />

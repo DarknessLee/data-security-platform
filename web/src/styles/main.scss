@@ -39,6 +39,10 @@ body {
 .content-card .el-card__body { padding: 14px 16px; }
 
 .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; }
+.dash-stat-grid { grid-template-columns: repeat(3, 1fr); }
+@media (min-width: 1600px) { .dash-stat-grid { grid-template-columns: repeat(6, 1fr); } }
+@media (max-width: 1100px) { .dash-stat-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 720px) { .dash-stat-grid { grid-template-columns: 1fr; } }
 
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }

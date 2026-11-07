@@ -97,6 +97,10 @@ async function main() {
     check('日志无未来时间', (await count(conn, "SELECT COUNT(*) AS c FROM audit_log WHERE created_at > NOW()")) === 0);
     check('资产名称无演示占位词', (await count(conn, "SELECT COUNT(*) AS c FROM data_asset WHERE asset_name LIKE '%test%' OR asset_name LIKE '%演示%' OR asset_name LIKE '%示例%'")) === 0);
     check('每个角色至少 1 条菜单授权', (await count(conn, 'SELECT COUNT(*) AS c FROM sys_role r LEFT JOIN sys_role_menu rm ON rm.role_id = r.id WHERE rm.role_id IS NULL')) === 0);
+    check('已授权模块均包含二级菜单（侧边栏可进入子页面）', (await count(conn, `SELECT COUNT(*) AS c FROM sys_role_menu rm
+      JOIN sys_menu m ON m.id = rm.menu_id AND m.menu_type = '目录'
+      WHERE EXISTS (SELECT 1 FROM sys_menu c WHERE c.parent_id = m.id)
+        AND NOT EXISTS (SELECT 1 FROM sys_role_menu rc JOIN sys_menu c2 ON c2.id = rc.menu_id WHERE rc.role_id = rm.role_id AND c2.parent_id = m.id)`)) === 0);
     check('每个角色至少 1 条接口授权', (await count(conn, 'SELECT COUNT(*) AS c FROM sys_role r LEFT JOIN sys_role_api ra ON ra.role_id = r.id WHERE ra.role_id IS NULL')) === 0);
   } finally {
     await conn.end();

@@ -20,9 +20,9 @@
     "dev": "node scripts/dev.mjs",
     "api": "npm run dev -w api",
     "web": "npm run dev -w web",
-    "build": "npm run build -w api && npm run build -w web",
+    "build": "node scripts/build.mjs",
     "test:api": "node scripts/test-api.mjs",
-    "test:e2e": "playwright test -c web/playwright.config.ts",
+    "test:e2e": "playwright test -c web/playwright.config.ts --output .runtime/pw-gate",
     "screenshots": "node scripts/screenshots.mjs",
     "check:docs": "node scripts/check-docs.mjs",
     "verify": "node scripts/verify.mjs"

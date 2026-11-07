@@ -109,8 +109,8 @@ function toLifecycleDto(row: LifecycleRow): Record<string, unknown> {
   return { ...row, occurred_at: dt(row.occurred_at) };
 }
 
-function parseId(raw: string | undefined): number {
-  const id = Number(raw);
+function parseId(raw: string | string[] | undefined): number {
+  const id = Number(Array.isArray(raw) ? raw[0] : raw);
   if (!Number.isInteger(id) || id <= 0) throw new ApiError(400, '资产 ID 不合法');
   return id;
 }

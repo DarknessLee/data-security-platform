@@ -1,4 +1,4 @@
-import bcrypt from 'bcryptjs';
+﻿import bcrypt from 'bcryptjs';
 import { Router } from 'express';
 import type { ResultSetHeader } from 'mysql2';
 import { z } from 'zod';
@@ -37,8 +37,9 @@ function dt(v: unknown): string | null {
   return Number.isNaN(d.getTime()) ? null : fmtDateTime(d);
 }
 
-function idParam(raw: string): number {
-  const id = Number(raw);
+function idParam(raw: string | string[] | undefined): number {
+  const value = Array.isArray(raw) ? raw[0] : raw;
+  const id = Number(value);
   if (!Number.isInteger(id) || id <= 0) throw new ApiError(400, '无效的资源 ID');
   return id;
 }
@@ -315,7 +316,7 @@ rbacRouter.get('/users', requirePerm('rbac'), async (req, res) => {
   );
 
   const withRoles = await attachRoles(rows.map(mapUser) as Array<Record<string, unknown> & { id: number }>);
-  ok(res, withRoles, pageMeta(Number(totalRow?.c ?? 0), p));
+  ok(res, withRoles, { total: Number(totalRow?.c ?? 0), page: p.page, pageSize: p.pageSize });
 });
 
 const userCreateSchema = z.object({
