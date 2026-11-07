@@ -164,7 +164,13 @@ const complianceOption = computed<EChartsOption>(() => ({
     data: (overview.value?.complianceTrend ?? []).map((d) => d.rate),
     itemStyle: { color: '#16a34a' },
     lineStyle: { width: 3 },
-    markLine: { silent: true, symbol: 'none', data: [{ yAxis: 90, label: { formatter: '目标 90%' } }], lineStyle: { color: '#f59e0b', type: 'dashed' } },
+    markLine: {
+      silent: true,
+      symbol: 'none',
+      // 标签锚定在左侧起点：起点坐标在动画中不变，所以虚线绘制时文字不会跟着滑动
+      data: [{ yAxis: 90, label: { position: 'insideStartTop', formatter: '目标 90%' } }],
+      lineStyle: { color: '#f59e0b', type: 'dashed' },
+    },
   }],
 }));
 
