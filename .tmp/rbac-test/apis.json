@@ -1,0 +1,694 @@
+﻿{
+    "code":  0,
+    "message":  "ok",
+    "data":  {
+                 "list":  [
+                              {
+                                  "id":  1,
+                                  "api_code":  "auth:post:auth_login",
+                                  "api_name":  "登录认证",
+                                  "api_group":  "auth",
+                                  "method":  "POST",
+                                  "path":  "/api/auth/login"
+                              },
+                              {
+                                  "id":  2,
+                                  "api_code":  "auth:post:auth_logout",
+                                  "api_name":  "退出登录",
+                                  "api_group":  "auth",
+                                  "method":  "POST",
+                                  "path":  "/api/auth/logout"
+                              },
+                              {
+                                  "id":  3,
+                                  "api_code":  "auth:get:auth_profile",
+                                  "api_name":  "读取当前用户",
+                                  "api_group":  "auth",
+                                  "method":  "GET",
+                                  "path":  "/api/auth/profile"
+                              },
+                              {
+                                  "id":  4,
+                                  "api_code":  "auth:get:auth_menus",
+                                  "api_name":  "读取可见菜单",
+                                  "api_group":  "auth",
+                                  "method":  "GET",
+                                  "path":  "/api/auth/menus"
+                              },
+                              {
+                                  "id":  5,
+                                  "api_code":  "dashboard:get:dashboard_overview",
+                                  "api_name":  "平台总览",
+                                  "api_group":  "dashboard",
+                                  "method":  "GET",
+                                  "path":  "/api/dashboard/overview"
+                              },
+                              {
+                                  "id":  6,
+                                  "api_code":  "dashboard:get:dashboard_trend",
+                                  "api_name":  "趋势分析",
+                                  "api_group":  "dashboard",
+                                  "method":  "GET",
+                                  "path":  "/api/dashboard/trend"
+                              },
+                              {
+                                  "id":  7,
+                                  "api_code":  "asset:get:assets",
+                                  "api_name":  "资产列表",
+                                  "api_group":  "asset",
+                                  "method":  "GET",
+                                  "path":  "/api/assets"
+                              },
+                              {
+                                  "id":  8,
+                                  "api_code":  "asset:get:assets__id",
+                                  "api_name":  "资产详情",
+                                  "api_group":  "asset",
+                                  "method":  "GET",
+                                  "path":  "/api/assets/:id"
+                              },
+                              {
+                                  "id":  9,
+                                  "api_code":  "asset:post:assets",
+                                  "api_name":  "新增资产",
+                                  "api_group":  "asset",
+                                  "method":  "POST",
+                                  "path":  "/api/assets"
+                              },
+                              {
+                                  "id":  10,
+                                  "api_code":  "asset:put:assets__id",
+                                  "api_name":  "编辑资产",
+                                  "api_group":  "asset",
+                                  "method":  "PUT",
+                                  "path":  "/api/assets/:id"
+                              },
+                              {
+                                  "id":  11,
+                                  "api_code":  "asset:post:assets_scan",
+                                  "api_name":  "资产扫描",
+                                  "api_group":  "asset",
+                                  "method":  "POST",
+                                  "path":  "/api/assets/scan"
+                              },
+                              {
+                                  "id":  12,
+                                  "api_code":  "asset:get:assets_stats",
+                                  "api_name":  "资产统计",
+                                  "api_group":  "asset",
+                                  "method":  "GET",
+                                  "path":  "/api/assets/stats"
+                              },
+                              {
+                                  "id":  13,
+                                  "api_code":  "asset:get:assets__id_lifecycle",
+                                  "api_name":  "生命周期记录",
+                                  "api_group":  "asset",
+                                  "method":  "GET",
+                                  "path":  "/api/assets/:id/lifecycle"
+                              },
+                              {
+                                  "id":  14,
+                                  "api_code":  "compliance:get:compliance_rules",
+                                  "api_name":  "规则库列表",
+                                  "api_group":  "compliance",
+                                  "method":  "GET",
+                                  "path":  "/api/compliance/rules"
+                              },
+                              {
+                                  "id":  15,
+                                  "api_code":  "compliance:post:compliance_rules",
+                                  "api_name":  "规则维护",
+                                  "api_group":  "compliance",
+                                  "method":  "POST",
+                                  "path":  "/api/compliance/rules"
+                              },
+                              {
+                                  "id":  16,
+                                  "api_code":  "compliance:post:compliance_checks_run",
+                                  "api_name":  "执行合规检查",
+                                  "api_group":  "compliance",
+                                  "method":  "POST",
+                                  "path":  "/api/compliance/checks/run"
+                              },
+                              {
+                                  "id":  17,
+                                  "api_code":  "compliance:get:compliance_checks",
+                                  "api_name":  "检查结果",
+                                  "api_group":  "compliance",
+                                  "method":  "GET",
+                                  "path":  "/api/compliance/checks"
+                              },
+                              {
+                                  "id":  18,
+                                  "api_code":  "compliance:put:compliance_rectifications__id",
+                                  "api_name":  "整改单更新",
+                                  "api_group":  "compliance",
+                                  "method":  "PUT",
+                                  "path":  "/api/compliance/rectifications/:id"
+                              },
+                              {
+                                  "id":  19,
+                                  "api_code":  "compliance:put:compliance_masking-rules__id",
+                                  "api_name":  "脱敏规则维护",
+                                  "api_group":  "compliance",
+                                  "method":  "PUT",
+                                  "path":  "/api/compliance/masking-rules/:id"
+                              },
+                              {
+                                  "id":  20,
+                                  "api_code":  "compliance:post:compliance_approvals__id_decide",
+                                  "api_name":  "共享审批处理",
+                                  "api_group":  "compliance",
+                                  "method":  "POST",
+                                  "path":  "/api/compliance/approvals/:id/decide"
+                              },
+                              {
+                                  "id":  21,
+                                  "api_code":  "compliance:get:compliance_report",
+                                  "api_name":  "合规报告",
+                                  "api_group":  "compliance",
+                                  "method":  "GET",
+                                  "path":  "/api/compliance/report"
+                              },
+                              {
+                                  "id":  22,
+                                  "api_code":  "risk:get:risk_events",
+                                  "api_name":  "风险事件列表",
+                                  "api_group":  "risk",
+                                  "method":  "GET",
+                                  "path":  "/api/risk/events"
+                              },
+                              {
+                                  "id":  23,
+                                  "api_code":  "risk:post:risk_events__id_handle",
+                                  "api_name":  "风险事件处置",
+                                  "api_group":  "risk",
+                                  "method":  "POST",
+                                  "path":  "/api/risk/events/:id/handle"
+                              },
+                              {
+                                  "id":  24,
+                                  "api_code":  "risk:post:risk_rules",
+                                  "api_name":  "监测规则维护",
+                                  "api_group":  "risk",
+                                  "method":  "POST",
+                                  "path":  "/api/risk/rules"
+                              },
+                              {
+                                  "id":  25,
+                                  "api_code":  "risk:get:risk_stats",
+                                  "api_name":  "风险统计",
+                                  "api_group":  "risk",
+                                  "method":  "GET",
+                                  "path":  "/api/risk/stats"
+                              },
+                              {
+                                  "id":  26,
+                                  "api_code":  "rbac:get:rbac_users",
+                                  "api_name":  "用户列表",
+                                  "api_group":  "rbac",
+                                  "method":  "GET",
+                                  "path":  "/api/rbac/users"
+                              },
+                              {
+                                  "id":  27,
+                                  "api_code":  "rbac:post:rbac_users",
+                                  "api_name":  "新增用户",
+                                  "api_group":  "rbac",
+                                  "method":  "POST",
+                                  "path":  "/api/rbac/users"
+                              },
+                              {
+                                  "id":  28,
+                                  "api_code":  "rbac:put:rbac_users__id",
+                                  "api_name":  "编辑用户",
+                                  "api_group":  "rbac",
+                                  "method":  "PUT",
+                                  "path":  "/api/rbac/users/:id"
+                              },
+                              {
+                                  "id":  29,
+                                  "api_code":  "rbac:post:rbac_users__id_reset-password",
+                                  "api_name":  "重置密码",
+                                  "api_group":  "rbac",
+                                  "method":  "POST",
+                                  "path":  "/api/rbac/users/:id/reset-password"
+                              },
+                              {
+                                  "id":  30,
+                                  "api_code":  "rbac:put:rbac_roles__id",
+                                  "api_name":  "角色维护",
+                                  "api_group":  "rbac",
+                                  "method":  "PUT",
+                                  "path":  "/api/rbac/roles/:id"
+                              },
+                              {
+                                  "id":  31,
+                                  "api_code":  "rbac:put:rbac_roles__id_menus",
+                                  "api_name":  "角色菜单授权",
+                                  "api_group":  "rbac",
+                                  "method":  "PUT",
+                                  "path":  "/api/rbac/roles/:id/menus"
+                              },
+                              {
+                                  "id":  32,
+                                  "api_code":  "rbac:get:rbac_menus",
+                                  "api_name":  "菜单列表",
+                                  "api_group":  "rbac",
+                                  "method":  "GET",
+                                  "path":  "/api/rbac/menus"
+                              },
+                              {
+                                  "id":  33,
+                                  "api_code":  "audit:get:audit_logs",
+                                  "api_name":  "审计日志查询",
+                                  "api_group":  "audit",
+                                  "method":  "GET",
+                                  "path":  "/api/audit/logs"
+                              },
+                              {
+                                  "id":  34,
+                                  "api_code":  "audit:get:audit_logs_export",
+                                  "api_name":  "审计日志导出",
+                                  "api_group":  "audit",
+                                  "method":  "GET",
+                                  "path":  "/api/audit/logs/export"
+                              },
+                              {
+                                  "id":  35,
+                                  "api_code":  "audit:get:audit_stats",
+                                  "api_name":  "审计统计",
+                                  "api_group":  "audit",
+                                  "method":  "GET",
+                                  "path":  "/api/audit/stats"
+                              },
+                              {
+                                  "id":  36,
+                                  "api_code":  "audit:post:audit_reports_generate",
+                                  "api_name":  "审计报表生成",
+                                  "api_group":  "audit",
+                                  "method":  "POST",
+                                  "path":  "/api/audit/reports/generate"
+                              },
+                              {
+                                  "id":  37,
+                                  "api_code":  "ops:get:ops_health",
+                                  "api_name":  "系统健康度",
+                                  "api_group":  "ops",
+                                  "method":  "GET",
+                                  "path":  "/api/ops/health"
+                              },
+                              {
+                                  "id":  38,
+                                  "api_code":  "ops:get:ops_metrics",
+                                  "api_name":  "监控指标",
+                                  "api_group":  "ops",
+                                  "method":  "GET",
+                                  "path":  "/api/ops/metrics"
+                              },
+                              {
+                                  "id":  39,
+                                  "api_code":  "ops:get:ops_tickets",
+                                  "api_name":  "工单列表",
+                                  "api_group":  "ops",
+                                  "method":  "GET",
+                                  "path":  "/api/ops/tickets"
+                              },
+                              {
+                                  "id":  40,
+                                  "api_code":  "ops:put:ops_tickets__id",
+                                  "api_name":  "工单处理",
+                                  "api_group":  "ops",
+                                  "method":  "PUT",
+                                  "path":  "/api/ops/tickets/:id"
+                              },
+                              {
+                                  "id":  41,
+                                  "api_code":  "ops:post:ops_backups",
+                                  "api_name":  "备份执行",
+                                  "api_group":  "ops",
+                                  "method":  "POST",
+                                  "path":  "/api/ops/backups"
+                              },
+                              {
+                                  "id":  42,
+                                  "api_code":  "ops:put:ops_configs__key",
+                                  "api_name":  "配置维护",
+                                  "api_group":  "ops",
+                                  "method":  "PUT",
+                                  "path":  "/api/ops/configs/:key"
+                              },
+                              {
+                                  "id":  43,
+                                  "api_code":  "ops:put:ops_notifications__id_read",
+                                  "api_name":  "通知已读",
+                                  "api_group":  "ops",
+                                  "method":  "PUT",
+                                  "path":  "/api/ops/notifications/:id/read"
+                              }
+                          ],
+                 "roles":  [
+                               {
+                                   "id":  1,
+                                   "role_code":  "SUPER_ADMIN",
+                                   "role_name":  "超级管理员"
+                               },
+                               {
+                                   "id":  2,
+                                   "role_code":  "SEC_ADMIN",
+                                   "role_name":  "安全管理员"
+                               },
+                               {
+                                   "id":  3,
+                                   "role_code":  "COMPLIANCE_OFFICER",
+                                   "role_name":  "合规专员"
+                               },
+                               {
+                                   "id":  4,
+                                   "role_code":  "DATA_STEWARD",
+                                   "role_name":  "数据管理员"
+                               },
+                               {
+                                   "id":  5,
+                                   "role_code":  "AUDITOR",
+                                   "role_name":  "审计员"
+                               },
+                               {
+                                   "id":  6,
+                                   "role_code":  "OPS",
+                                   "role_name":  "运维工程师"
+                               },
+                               {
+                                   "id":  7,
+                                   "role_code":  "DEPT_HEAD",
+                                   "role_name":  "部门主管"
+                               },
+                               {
+                                   "id":  8,
+                                   "role_code":  "ANALYST",
+                                   "role_name":  "数据分析师"
+                               }
+                           ],
+                 "groups":  [
+                                {
+                                    "code":  "auth",
+                                    "name":  "auth",
+                                    "count":  4
+                                },
+                                {
+                                    "code":  "dashboard",
+                                    "name":  "平台总览",
+                                    "count":  2
+                                },
+                                {
+                                    "code":  "asset",
+                                    "name":  "数据资产治理",
+                                    "count":  7
+                                },
+                                {
+                                    "code":  "compliance",
+                                    "name":  "安全合规管理",
+                                    "count":  8
+                                },
+                                {
+                                    "code":  "risk",
+                                    "name":  "智能风险监测",
+                                    "count":  4
+                                },
+                                {
+                                    "code":  "rbac",
+                                    "name":  "权限安全管控",
+                                    "count":  7
+                                },
+                                {
+                                    "code":  "audit",
+                                    "name":  "安全审计追溯",
+                                    "count":  4
+                                },
+                                {
+                                    "code":  "ops",
+                                    "name":  "服务保障运维",
+                                    "count":  7
+                                }
+                            ],
+                 "grants":  [
+                                {
+                                    "role_id":  1,
+                                    "role_code":  "SUPER_ADMIN",
+                                    "role_name":  "超级管理员",
+                                    "apiIds":  [
+                                                   5,
+                                                   6,
+                                                   7,
+                                                   8,
+                                                   9,
+                                                   10,
+                                                   11,
+                                                   12,
+                                                   13,
+                                                   14,
+                                                   15,
+                                                   16,
+                                                   17,
+                                                   18,
+                                                   19,
+                                                   20,
+                                                   21,
+                                                   22,
+                                                   23,
+                                                   24,
+                                                   25,
+                                                   26,
+                                                   27,
+                                                   28,
+                                                   29,
+                                                   30,
+                                                   31,
+                                                   32,
+                                                   33,
+                                                   34,
+                                                   35,
+                                                   36,
+                                                   37,
+                                                   38,
+                                                   39,
+                                                   40,
+                                                   41,
+                                                   42,
+                                                   43
+                                               ]
+                                },
+                                {
+                                    "role_id":  2,
+                                    "role_code":  "SEC_ADMIN",
+                                    "role_name":  "安全管理员",
+                                    "apiIds":  [
+                                                   5,
+                                                   6,
+                                                   7,
+                                                   8,
+                                                   9,
+                                                   10,
+                                                   11,
+                                                   12,
+                                                   13,
+                                                   14,
+                                                   15,
+                                                   16,
+                                                   17,
+                                                   18,
+                                                   19,
+                                                   20,
+                                                   21,
+                                                   22,
+                                                   23,
+                                                   24,
+                                                   25,
+                                                   26,
+                                                   32,
+                                                   33,
+                                                   34,
+                                                   35,
+                                                   37,
+                                                   38,
+                                                   39
+                                               ]
+                                },
+                                {
+                                    "role_id":  3,
+                                    "role_code":  "COMPLIANCE_OFFICER",
+                                    "role_name":  "合规专员",
+                                    "apiIds":  [
+                                                   5,
+                                                   6,
+                                                   7,
+                                                   8,
+                                                   9,
+                                                   10,
+                                                   11,
+                                                   12,
+                                                   13,
+                                                   14,
+                                                   15,
+                                                   16,
+                                                   17,
+                                                   18,
+                                                   19,
+                                                   20,
+                                                   21,
+                                                   22,
+                                                   23,
+                                                   24,
+                                                   25,
+                                                   26,
+                                                   32,
+                                                   33,
+                                                   34,
+                                                   35,
+                                                   37,
+                                                   38,
+                                                   39
+                                               ]
+                                },
+                                {
+                                    "role_id":  4,
+                                    "role_code":  "DATA_STEWARD",
+                                    "role_name":  "数据管理员",
+                                    "apiIds":  [
+                                                   5,
+                                                   6,
+                                                   7,
+                                                   8,
+                                                   9,
+                                                   10,
+                                                   11,
+                                                   12,
+                                                   13,
+                                                   14,
+                                                   15,
+                                                   16,
+                                                   17,
+                                                   18,
+                                                   19,
+                                                   20,
+                                                   21,
+                                                   22,
+                                                   25,
+                                                   26,
+                                                   32,
+                                                   33,
+                                                   34,
+                                                   35,
+                                                   37,
+                                                   38,
+                                                   39
+                                               ]
+                                },
+                                {
+                                    "role_id":  5,
+                                    "role_code":  "AUDITOR",
+                                    "role_name":  "审计员",
+                                    "apiIds":  [
+                                                   5,
+                                                   6,
+                                                   7,
+                                                   8,
+                                                   12,
+                                                   13,
+                                                   14,
+                                                   17,
+                                                   21,
+                                                   22,
+                                                   25,
+                                                   26,
+                                                   32,
+                                                   33,
+                                                   34,
+                                                   35,
+                                                   37,
+                                                   38,
+                                                   39
+                                               ]
+                                },
+                                {
+                                    "role_id":  6,
+                                    "role_code":  "OPS",
+                                    "role_name":  "运维工程师",
+                                    "apiIds":  [
+                                                   5,
+                                                   6,
+                                                   7,
+                                                   8,
+                                                   12,
+                                                   13,
+                                                   14,
+                                                   17,
+                                                   21,
+                                                   22,
+                                                   25,
+                                                   26,
+                                                   32,
+                                                   33,
+                                                   34,
+                                                   35,
+                                                   37,
+                                                   38,
+                                                   39,
+                                                   40,
+                                                   41,
+                                                   42,
+                                                   43
+                                               ]
+                                },
+                                {
+                                    "role_id":  7,
+                                    "role_code":  "DEPT_HEAD",
+                                    "role_name":  "部门主管",
+                                    "apiIds":  [
+                                                   5,
+                                                   6,
+                                                   7,
+                                                   8,
+                                                   12,
+                                                   13,
+                                                   14,
+                                                   17,
+                                                   21,
+                                                   22,
+                                                   25,
+                                                   26,
+                                                   32,
+                                                   33,
+                                                   34,
+                                                   35,
+                                                   37,
+                                                   38,
+                                                   39
+                                               ]
+                                },
+                                {
+                                    "role_id":  8,
+                                    "role_code":  "ANALYST",
+                                    "role_name":  "数据分析师",
+                                    "apiIds":  [
+                                                   5,
+                                                   6,
+                                                   7,
+                                                   8,
+                                                   12,
+                                                   13,
+                                                   14,
+                                                   17,
+                                                   21,
+                                                   22,
+                                                   25,
+                                                   37,
+                                                   38,
+                                                   39
+                                               ]
+                                }
+                            ],
+                 "total":  43
+             }
+}

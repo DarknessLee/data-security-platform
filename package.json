@@ -1,0 +1,33 @@
+{
+  "name": "data-security-platform",
+  "version": "1.0.0",
+  "private": true,
+  "description": "大数据安全治理与服务保障平台 V1.0（软著演示版）",
+  "workspaces": [
+    "api",
+    "web"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "setup": "node scripts/setup.mjs",
+    "docker:up": "node scripts/docker.mjs up",
+    "docker:down": "node scripts/docker.mjs down",
+    "db:init": "node api/db/init.mjs",
+    "db:reset": "node api/db/init.mjs",
+    "db:validate": "node api/db/validate.mjs",
+    "dev": "node scripts/dev.mjs",
+    "api": "npm run dev -w api",
+    "web": "npm run dev -w web",
+    "build": "npm run build -w api && npm run build -w web",
+    "test:api": "node scripts/test-api.mjs",
+    "test:e2e": "playwright test -c web/playwright.config.ts",
+    "screenshots": "node scripts/screenshots.mjs",
+    "check:docs": "node scripts/check-docs.mjs",
+    "verify": "node scripts/verify.mjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.55.0"
+  }
+}

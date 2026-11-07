@@ -1,0 +1,938 @@
+﻿{
+    "code":  0,
+    "message":  "ok",
+    "data":  {
+                 "list":  [
+                              {
+                                  "id":  1,
+                                  "parent_id":  0,
+                                  "menu_name":  "平台总览",
+                                  "path":  "/dashboard",
+                                  "icon":  "Odometer",
+                                  "permission_code":  "dashboard",
+                                  "menu_type":  "目录",
+                                  "sort":  10,
+                                  "visible":  1,
+                                  "children":  [
+
+                                               ]
+                              },
+                              {
+                                  "id":  2,
+                                  "parent_id":  0,
+                                  "menu_name":  "数据资产治理",
+                                  "path":  "/asset",
+                                  "icon":  "Coin",
+                                  "permission_code":  "asset",
+                                  "menu_type":  "目录",
+                                  "sort":  20,
+                                  "visible":  1,
+                                  "children":  [
+                                                   {
+                                                       "id":  3,
+                                                       "parent_id":  2,
+                                                       "menu_name":  "资产台账",
+                                                       "path":  "/asset/list",
+                                                       "icon":  "Files",
+                                                       "permission_code":  null,
+                                                       "menu_type":  "菜单",
+                                                       "sort":  1,
+                                                       "visible":  1,
+                                                       "children":  [
+
+                                                                    ]
+                                                   },
+                                                   {
+                                                       "id":  4,
+                                                       "parent_id":  2,
+                                                       "menu_name":  "分类分级",
+                                                       "path":  "/asset/categories",
+                                                       "icon":  "Grid",
+                                                       "permission_code":  null,
+                                                       "menu_type":  "菜单",
+                                                       "sort":  2,
+                                                       "visible":  1,
+                                                       "children":  [
+
+                                                                    ]
+                                                   },
+                                                   {
+                                                       "id":  5,
+                                                       "parent_id":  2,
+                                                       "menu_name":  "生命周期",
+                                                       "path":  "/asset/lifecycle",
+                                                       "icon":  "Refresh",
+                                                       "permission_code":  null,
+                                                       "menu_type":  "菜单",
+                                                       "sort":  3,
+                                                       "visible":  1,
+                                                       "children":  [
+
+                                                                    ]
+                                                   }
+                                               ]
+                              },
+                              {
+                                  "id":  6,
+                                  "parent_id":  0,
+                                  "menu_name":  "安全合规管理",
+                                  "path":  "/compliance",
+                                  "icon":  "DocumentChecked",
+                                  "permission_code":  "compliance",
+                                  "menu_type":  "目录",
+                                  "sort":  30,
+                                  "visible":  1,
+                                  "children":  [
+                                                   {
+                                                       "id":  7,
+                                                       "parent_id":  6,
+                                                       "menu_name":  "合规规则库",
+                                                       "path":  "/compliance/rules",
+                                                       "icon":  "Notebook",
+                                                       "permission_code":  null,
+                                                       "menu_type":  "菜单",
+                                                       "sort":  1,
+                                                       "visible":  1,
+                                                       "children":  [
+
+                                                                    ]
+                                                   },
+                                                   {
+                                                       "id":  8,
+                                                       "parent_id":  6,
+                                                       "menu_name":  "合规检查",
+                                                       "path":  "/compliance/checks",
+                                                       "icon":  "Finished",
+                                                       "permission_code":  null,
+                                                       "menu_type":  "菜单",
+                                                       "sort":  2,
+                                                       "visible":  1,
+                                                       "children":  [
+
+                                                                    ]
+                                                   },
+                                                   {
+                                                       "id":  9,
+                                                       "parent_id":  6,
+                                                       "menu_name":  "整改跟踪",
+                                                       "path":  "/compliance/rectify",
+                                                       "icon":  "EditPen",
+                                                       "permission_code":  null,
+                                                       "menu_type":  "菜单",
+                                                       "sort":  3,
+                                                       "visible":  1,
+                                                       "children":  [
+
+                                                                    ]
+                                                   },
+                                                   {
+                                                       "id":  10,
+                                                       "parent_id":  6,
+                                                       "menu_name":  "脱敏管理",
+                                                       "path":  "/compliance/masking",
+                                                       "icon":  "Hide",
+                                                       "permission_code":  null,
+                                                       "menu_type":  "菜单",
+                                                       "sort":  4,
+                                                       "visible":  1,
+                                                       "children":  [
+
+                                                                    ]
+                                                   },
+                                                   {
+                                                       "id":  11,
+                                                       "parent_id":  6,
+                                                       "menu_name":  "共享审批",
+                                                       "path":  "/compliance/approvals",
+                                                       "icon":  "Stamp",
+                                                       "permission_code":  null,
+                                                       "menu_type":  "菜单",
+                                                       "sort":  5,
+                                                       "visible":  1,
+                                                       "children":  [
+
+                                                                    ]
+                                                   },
+                                                   {
+                                                       "id":  12,
+                                                       "parent_id":  6,
+                                                       "menu_name":  "合规报告",
+                                                       "path":  "/compliance/report",
+                                                       "icon":  "DataAnalysis",
+                                                       "permission_code":  null,
+                                                       "menu_type":  "菜单",
+                                                       "sort":  6,
+                                                       "visible":  1,
+                                                       "children":  [
+
+                                                                    ]
+                                                   }
+                                               ]
+                              },
+                              {
+                                  "id":  13,
+                                  "parent_id":  0,
+                                  "menu_name":  "智能风险监测",
+                                  "path":  "/risk",
+                                  "icon":  "Warning",
+                                  "permission_code":  "risk",
+                                  "menu_type":  "目录",
+                                  "sort":  40,
+                                  "visible":  1,
+                                  "children":  [
+                                                   {
+                                                       "id":  14,
+                                                       "parent_id":  13,
+                                                       "menu_name":  "风险事件",
+                                                       "path":  "/risk/events",
+                                                       "icon":  "Bell",
+                                                       "permission_code":  null,
+                                                       "menu_type":  "菜单",
+                                                       "sort":  1,
+                                                       "visible":  1,
+                                                       "children":  [
+
+                                                                    ]
+                                                   },
+                                                   {
+                                                       "id":  15,
+                                                       "parent_id":  13,
+                                                       "menu_name":  "监测规则",
+                                                       "path":  "/risk/rules",
+                                                       "icon":  "SetUp",
+                                                       "permission_code":  null,
+                                                       "menu_type":  "菜单",
+                                                       "sort":  2,
+                                                       "visible":  1,
+                                                       "children":  [
+
+                                                                    ]
+                                                   },
+                                                   {
+                                                       "id":  16,
+                                                       "parent_id":  13,
+                                                       "menu_name":  "实时监控",
+                                                       "path":  "/risk/realtime",
+                                                       "icon":  "Histogram",
+                                                       "permission_code":  null,
+                                                       "menu_type":  "菜单",
+                                                       "sort":  3,
+                                                       "visible":  1,
+                                                       "children":  [
+
+                                                                    ]
+                                                   }
+                                               ]
+                              },
+                              {
+                                  "id":  17,
+                                  "parent_id":  0,
+                                  "menu_name":  "权限安全管控",
+                                  "path":  "/rbac",
+                                  "icon":  "UserFilled",
+                                  "permission_code":  "rbac",
+                                  "menu_type":  "目录",
+                                  "sort":  50,
+                                  "visible":  1,
+                                  "children":  [
+                                                   {
+                                                       "id":  18,
+                                                       "parent_id":  17,
+                                                       "menu_name":  "用户管理",
+                                                       "path":  "/rbac/users",
+                                                       "icon":  "User",
+                                                       "permission_code":  null,
+                                                       "menu_type":  "菜单",
+                                                       "sort":  1,
+                                                       "visible":  1,
+                                                       "children":  [
+
+                                                                    ]
+                                                   },
+                                                   {
+                                                       "id":  19,
+                                                       "parent_id":  17,
+                                                       "menu_name":  "角色管理",
+                                                       "path":  "/rbac/roles",
+                                                       "icon":  "Avatar",
+                                                       "permission_code":  null,
+                                                       "menu_type":  "菜单",
+                                                       "sort":  2,
+                                                       "visible":  1,
+                                                       "children":  [
+
+                                                                    ]
+                                                   },
+                                                   {
+                                                       "id":  20,
+                                                       "parent_id":  17,
+                                                       "menu_name":  "菜单权限",
+                                                       "path":  "/rbac/menus",
+                                                       "icon":  "Menu",
+                                                       "permission_code":  null,
+                                                       "menu_type":  "菜单",
+                                                       "sort":  3,
+                                                       "visible":  1,
+                                                       "children":  [
+
+                                                                    ]
+                                                   },
+                                                   {
+                                                       "id":  21,
+                                                       "parent_id":  17,
+                                                       "menu_name":  "接口权限",
+                                                       "path":  "/rbac/apis",
+                                                       "icon":  "Connection",
+                                                       "permission_code":  null,
+                                                       "menu_type":  "菜单",
+                                                       "sort":  4,
+                                                       "visible":  1,
+                                                       "children":  [
+
+                                                                    ]
+                                                   }
+                                               ]
+                              },
+                              {
+                                  "id":  22,
+                                  "parent_id":  0,
+                                  "menu_name":  "安全审计追溯",
+                                  "path":  "/audit",
+                                  "icon":  "Tickets",
+                                  "permission_code":  "audit",
+                                  "menu_type":  "目录",
+                                  "sort":  60,
+                                  "visible":  1,
+                                  "children":  [
+                                                   {
+                                                       "id":  23,
+                                                       "parent_id":  22,
+                                                       "menu_name":  "审计日志",
+                                                       "path":  "/audit/logs",
+                                                       "icon":  "List",
+                                                       "permission_code":  null,
+                                                       "menu_type":  "菜单",
+                                                       "sort":  1,
+                                                       "visible":  1,
+                                                       "children":  [
+
+                                                                    ]
+                                                   },
+                                                   {
+                                                       "id":  24,
+                                                       "parent_id":  22,
+                                                       "menu_name":  "审计报表",
+                                                       "path":  "/audit/reports",
+                                                       "icon":  "TrendCharts",
+                                                       "permission_code":  null,
+                                                       "menu_type":  "菜单",
+                                                       "sort":  2,
+                                                       "visible":  1,
+                                                       "children":  [
+
+                                                                    ]
+                                                   }
+                                               ]
+                              },
+                              {
+                                  "id":  25,
+                                  "parent_id":  0,
+                                  "menu_name":  "服务保障运维",
+                                  "path":  "/ops",
+                                  "icon":  "Monitor",
+                                  "permission_code":  "ops",
+                                  "menu_type":  "目录",
+                                  "sort":  70,
+                                  "visible":  1,
+                                  "children":  [
+                                                   {
+                                                       "id":  26,
+                                                       "parent_id":  25,
+                                                       "menu_name":  "运行监控",
+                                                       "path":  "/ops/monitor",
+                                                       "icon":  "Cpu",
+                                                       "permission_code":  null,
+                                                       "menu_type":  "菜单",
+                                                       "sort":  1,
+                                                       "visible":  1,
+                                                       "children":  [
+
+                                                                    ]
+                                                   },
+                                                   {
+                                                       "id":  27,
+                                                       "parent_id":  25,
+                                                       "menu_name":  "运维工单",
+                                                       "path":  "/ops/tickets",
+                                                       "icon":  "Service",
+                                                       "permission_code":  null,
+                                                       "menu_type":  "菜单",
+                                                       "sort":  2,
+                                                       "visible":  1,
+                                                       "children":  [
+
+                                                                    ]
+                                                   },
+                                                   {
+                                                       "id":  28,
+                                                       "parent_id":  25,
+                                                       "menu_name":  "数据备份",
+                                                       "path":  "/ops/backups",
+                                                       "icon":  "FolderOpened",
+                                                       "permission_code":  null,
+                                                       "menu_type":  "菜单",
+                                                       "sort":  3,
+                                                       "visible":  1,
+                                                       "children":  [
+
+                                                                    ]
+                                                   },
+                                                   {
+                                                       "id":  29,
+                                                       "parent_id":  25,
+                                                       "menu_name":  "平台配置",
+                                                       "path":  "/ops/configs",
+                                                       "icon":  "Setting",
+                                                       "permission_code":  null,
+                                                       "menu_type":  "菜单",
+                                                       "sort":  4,
+                                                       "visible":  1,
+                                                       "children":  [
+
+                                                                    ]
+                                                   },
+                                                   {
+                                                       "id":  30,
+                                                       "parent_id":  25,
+                                                       "menu_name":  "版本管理",
+                                                       "path":  "/ops/versions",
+                                                       "icon":  "Box",
+                                                       "permission_code":  null,
+                                                       "menu_type":  "菜单",
+                                                       "sort":  5,
+                                                       "visible":  1,
+                                                       "children":  [
+
+                                                                    ]
+                                                   }
+                                               ]
+                              }
+                          ],
+                 "flat":  [
+                              {
+                                  "id":  3,
+                                  "parent_id":  2,
+                                  "menu_name":  "资产台账",
+                                  "path":  "/asset/list",
+                                  "icon":  "Files",
+                                  "permission_code":  null,
+                                  "menu_type":  "菜单",
+                                  "sort":  1,
+                                  "visible":  1,
+                                  "label":  "资产台账"
+                              },
+                              {
+                                  "id":  7,
+                                  "parent_id":  6,
+                                  "menu_name":  "合规规则库",
+                                  "path":  "/compliance/rules",
+                                  "icon":  "Notebook",
+                                  "permission_code":  null,
+                                  "menu_type":  "菜单",
+                                  "sort":  1,
+                                  "visible":  1,
+                                  "label":  "合规规则库"
+                              },
+                              {
+                                  "id":  14,
+                                  "parent_id":  13,
+                                  "menu_name":  "风险事件",
+                                  "path":  "/risk/events",
+                                  "icon":  "Bell",
+                                  "permission_code":  null,
+                                  "menu_type":  "菜单",
+                                  "sort":  1,
+                                  "visible":  1,
+                                  "label":  "风险事件"
+                              },
+                              {
+                                  "id":  18,
+                                  "parent_id":  17,
+                                  "menu_name":  "用户管理",
+                                  "path":  "/rbac/users",
+                                  "icon":  "User",
+                                  "permission_code":  null,
+                                  "menu_type":  "菜单",
+                                  "sort":  1,
+                                  "visible":  1,
+                                  "label":  "用户管理"
+                              },
+                              {
+                                  "id":  23,
+                                  "parent_id":  22,
+                                  "menu_name":  "审计日志",
+                                  "path":  "/audit/logs",
+                                  "icon":  "List",
+                                  "permission_code":  null,
+                                  "menu_type":  "菜单",
+                                  "sort":  1,
+                                  "visible":  1,
+                                  "label":  "审计日志"
+                              },
+                              {
+                                  "id":  26,
+                                  "parent_id":  25,
+                                  "menu_name":  "运行监控",
+                                  "path":  "/ops/monitor",
+                                  "icon":  "Cpu",
+                                  "permission_code":  null,
+                                  "menu_type":  "菜单",
+                                  "sort":  1,
+                                  "visible":  1,
+                                  "label":  "运行监控"
+                              },
+                              {
+                                  "id":  4,
+                                  "parent_id":  2,
+                                  "menu_name":  "分类分级",
+                                  "path":  "/asset/categories",
+                                  "icon":  "Grid",
+                                  "permission_code":  null,
+                                  "menu_type":  "菜单",
+                                  "sort":  2,
+                                  "visible":  1,
+                                  "label":  "分类分级"
+                              },
+                              {
+                                  "id":  8,
+                                  "parent_id":  6,
+                                  "menu_name":  "合规检查",
+                                  "path":  "/compliance/checks",
+                                  "icon":  "Finished",
+                                  "permission_code":  null,
+                                  "menu_type":  "菜单",
+                                  "sort":  2,
+                                  "visible":  1,
+                                  "label":  "合规检查"
+                              },
+                              {
+                                  "id":  15,
+                                  "parent_id":  13,
+                                  "menu_name":  "监测规则",
+                                  "path":  "/risk/rules",
+                                  "icon":  "SetUp",
+                                  "permission_code":  null,
+                                  "menu_type":  "菜单",
+                                  "sort":  2,
+                                  "visible":  1,
+                                  "label":  "监测规则"
+                              },
+                              {
+                                  "id":  19,
+                                  "parent_id":  17,
+                                  "menu_name":  "角色管理",
+                                  "path":  "/rbac/roles",
+                                  "icon":  "Avatar",
+                                  "permission_code":  null,
+                                  "menu_type":  "菜单",
+                                  "sort":  2,
+                                  "visible":  1,
+                                  "label":  "角色管理"
+                              },
+                              {
+                                  "id":  24,
+                                  "parent_id":  22,
+                                  "menu_name":  "审计报表",
+                                  "path":  "/audit/reports",
+                                  "icon":  "TrendCharts",
+                                  "permission_code":  null,
+                                  "menu_type":  "菜单",
+                                  "sort":  2,
+                                  "visible":  1,
+                                  "label":  "审计报表"
+                              },
+                              {
+                                  "id":  27,
+                                  "parent_id":  25,
+                                  "menu_name":  "运维工单",
+                                  "path":  "/ops/tickets",
+                                  "icon":  "Service",
+                                  "permission_code":  null,
+                                  "menu_type":  "菜单",
+                                  "sort":  2,
+                                  "visible":  1,
+                                  "label":  "运维工单"
+                              },
+                              {
+                                  "id":  5,
+                                  "parent_id":  2,
+                                  "menu_name":  "生命周期",
+                                  "path":  "/asset/lifecycle",
+                                  "icon":  "Refresh",
+                                  "permission_code":  null,
+                                  "menu_type":  "菜单",
+                                  "sort":  3,
+                                  "visible":  1,
+                                  "label":  "生命周期"
+                              },
+                              {
+                                  "id":  9,
+                                  "parent_id":  6,
+                                  "menu_name":  "整改跟踪",
+                                  "path":  "/compliance/rectify",
+                                  "icon":  "EditPen",
+                                  "permission_code":  null,
+                                  "menu_type":  "菜单",
+                                  "sort":  3,
+                                  "visible":  1,
+                                  "label":  "整改跟踪"
+                              },
+                              {
+                                  "id":  16,
+                                  "parent_id":  13,
+                                  "menu_name":  "实时监控",
+                                  "path":  "/risk/realtime",
+                                  "icon":  "Histogram",
+                                  "permission_code":  null,
+                                  "menu_type":  "菜单",
+                                  "sort":  3,
+                                  "visible":  1,
+                                  "label":  "实时监控"
+                              },
+                              {
+                                  "id":  20,
+                                  "parent_id":  17,
+                                  "menu_name":  "菜单权限",
+                                  "path":  "/rbac/menus",
+                                  "icon":  "Menu",
+                                  "permission_code":  null,
+                                  "menu_type":  "菜单",
+                                  "sort":  3,
+                                  "visible":  1,
+                                  "label":  "菜单权限"
+                              },
+                              {
+                                  "id":  28,
+                                  "parent_id":  25,
+                                  "menu_name":  "数据备份",
+                                  "path":  "/ops/backups",
+                                  "icon":  "FolderOpened",
+                                  "permission_code":  null,
+                                  "menu_type":  "菜单",
+                                  "sort":  3,
+                                  "visible":  1,
+                                  "label":  "数据备份"
+                              },
+                              {
+                                  "id":  10,
+                                  "parent_id":  6,
+                                  "menu_name":  "脱敏管理",
+                                  "path":  "/compliance/masking",
+                                  "icon":  "Hide",
+                                  "permission_code":  null,
+                                  "menu_type":  "菜单",
+                                  "sort":  4,
+                                  "visible":  1,
+                                  "label":  "脱敏管理"
+                              },
+                              {
+                                  "id":  21,
+                                  "parent_id":  17,
+                                  "menu_name":  "接口权限",
+                                  "path":  "/rbac/apis",
+                                  "icon":  "Connection",
+                                  "permission_code":  null,
+                                  "menu_type":  "菜单",
+                                  "sort":  4,
+                                  "visible":  1,
+                                  "label":  "接口权限"
+                              },
+                              {
+                                  "id":  29,
+                                  "parent_id":  25,
+                                  "menu_name":  "平台配置",
+                                  "path":  "/ops/configs",
+                                  "icon":  "Setting",
+                                  "permission_code":  null,
+                                  "menu_type":  "菜单",
+                                  "sort":  4,
+                                  "visible":  1,
+                                  "label":  "平台配置"
+                              },
+                              {
+                                  "id":  11,
+                                  "parent_id":  6,
+                                  "menu_name":  "共享审批",
+                                  "path":  "/compliance/approvals",
+                                  "icon":  "Stamp",
+                                  "permission_code":  null,
+                                  "menu_type":  "菜单",
+                                  "sort":  5,
+                                  "visible":  1,
+                                  "label":  "共享审批"
+                              },
+                              {
+                                  "id":  30,
+                                  "parent_id":  25,
+                                  "menu_name":  "版本管理",
+                                  "path":  "/ops/versions",
+                                  "icon":  "Box",
+                                  "permission_code":  null,
+                                  "menu_type":  "菜单",
+                                  "sort":  5,
+                                  "visible":  1,
+                                  "label":  "版本管理"
+                              },
+                              {
+                                  "id":  12,
+                                  "parent_id":  6,
+                                  "menu_name":  "合规报告",
+                                  "path":  "/compliance/report",
+                                  "icon":  "DataAnalysis",
+                                  "permission_code":  null,
+                                  "menu_type":  "菜单",
+                                  "sort":  6,
+                                  "visible":  1,
+                                  "label":  "合规报告"
+                              },
+                              {
+                                  "id":  1,
+                                  "parent_id":  0,
+                                  "menu_name":  "平台总览",
+                                  "path":  "/dashboard",
+                                  "icon":  "Odometer",
+                                  "permission_code":  "dashboard",
+                                  "menu_type":  "目录",
+                                  "sort":  10,
+                                  "visible":  1,
+                                  "label":  "平台总览"
+                              },
+                              {
+                                  "id":  2,
+                                  "parent_id":  0,
+                                  "menu_name":  "数据资产治理",
+                                  "path":  "/asset",
+                                  "icon":  "Coin",
+                                  "permission_code":  "asset",
+                                  "menu_type":  "目录",
+                                  "sort":  20,
+                                  "visible":  1,
+                                  "label":  "数据资产治理"
+                              },
+                              {
+                                  "id":  6,
+                                  "parent_id":  0,
+                                  "menu_name":  "安全合规管理",
+                                  "path":  "/compliance",
+                                  "icon":  "DocumentChecked",
+                                  "permission_code":  "compliance",
+                                  "menu_type":  "目录",
+                                  "sort":  30,
+                                  "visible":  1,
+                                  "label":  "安全合规管理"
+                              },
+                              {
+                                  "id":  13,
+                                  "parent_id":  0,
+                                  "menu_name":  "智能风险监测",
+                                  "path":  "/risk",
+                                  "icon":  "Warning",
+                                  "permission_code":  "risk",
+                                  "menu_type":  "目录",
+                                  "sort":  40,
+                                  "visible":  1,
+                                  "label":  "智能风险监测"
+                              },
+                              {
+                                  "id":  17,
+                                  "parent_id":  0,
+                                  "menu_name":  "权限安全管控",
+                                  "path":  "/rbac",
+                                  "icon":  "UserFilled",
+                                  "permission_code":  "rbac",
+                                  "menu_type":  "目录",
+                                  "sort":  50,
+                                  "visible":  1,
+                                  "label":  "权限安全管控"
+                              },
+                              {
+                                  "id":  22,
+                                  "parent_id":  0,
+                                  "menu_name":  "安全审计追溯",
+                                  "path":  "/audit",
+                                  "icon":  "Tickets",
+                                  "permission_code":  "audit",
+                                  "menu_type":  "目录",
+                                  "sort":  60,
+                                  "visible":  1,
+                                  "label":  "安全审计追溯"
+                              },
+                              {
+                                  "id":  25,
+                                  "parent_id":  0,
+                                  "menu_name":  "服务保障运维",
+                                  "path":  "/ops",
+                                  "icon":  "Monitor",
+                                  "permission_code":  "ops",
+                                  "menu_type":  "目录",
+                                  "sort":  70,
+                                  "visible":  1,
+                                  "label":  "服务保障运维"
+                              }
+                          ],
+                 "roles":  [
+                               {
+                                   "id":  1,
+                                   "role_code":  "SUPER_ADMIN",
+                                   "role_name":  "超级管理员"
+                               },
+                               {
+                                   "id":  2,
+                                   "role_code":  "SEC_ADMIN",
+                                   "role_name":  "安全管理员"
+                               },
+                               {
+                                   "id":  3,
+                                   "role_code":  "COMPLIANCE_OFFICER",
+                                   "role_name":  "合规专员"
+                               },
+                               {
+                                   "id":  4,
+                                   "role_code":  "DATA_STEWARD",
+                                   "role_name":  "数据管理员"
+                               },
+                               {
+                                   "id":  5,
+                                   "role_code":  "AUDITOR",
+                                   "role_name":  "审计员"
+                               },
+                               {
+                                   "id":  6,
+                                   "role_code":  "OPS",
+                                   "role_name":  "运维工程师"
+                               },
+                               {
+                                   "id":  7,
+                                   "role_code":  "DEPT_HEAD",
+                                   "role_name":  "部门主管"
+                               },
+                               {
+                                   "id":  8,
+                                   "role_code":  "ANALYST",
+                                   "role_name":  "数据分析师"
+                               }
+                           ],
+                 "grants":  [
+                                {
+                                    "role_id":  1,
+                                    "role_code":  "SUPER_ADMIN",
+                                    "role_name":  "超级管理员",
+                                    "menuIds":  [
+                                                    1,
+                                                    2,
+                                                    6,
+                                                    13,
+                                                    17,
+                                                    22,
+                                                    25
+                                                ]
+                                },
+                                {
+                                    "role_id":  2,
+                                    "role_code":  "SEC_ADMIN",
+                                    "role_name":  "安全管理员",
+                                    "menuIds":  [
+                                                    1,
+                                                    2,
+                                                    6,
+                                                    13,
+                                                    17,
+                                                    22,
+                                                    25
+                                                ]
+                                },
+                                {
+                                    "role_id":  3,
+                                    "role_code":  "COMPLIANCE_OFFICER",
+                                    "role_name":  "合规专员",
+                                    "menuIds":  [
+                                                    1,
+                                                    2,
+                                                    6,
+                                                    13,
+                                                    17,
+                                                    22,
+                                                    25
+                                                ]
+                                },
+                                {
+                                    "role_id":  4,
+                                    "role_code":  "DATA_STEWARD",
+                                    "role_name":  "数据管理员",
+                                    "menuIds":  [
+                                                    1,
+                                                    2,
+                                                    6,
+                                                    13,
+                                                    17,
+                                                    22,
+                                                    25
+                                                ]
+                                },
+                                {
+                                    "role_id":  5,
+                                    "role_code":  "AUDITOR",
+                                    "role_name":  "审计员",
+                                    "menuIds":  [
+                                                    1,
+                                                    2,
+                                                    6,
+                                                    13,
+                                                    17,
+                                                    22,
+                                                    25
+                                                ]
+                                },
+                                {
+                                    "role_id":  6,
+                                    "role_code":  "OPS",
+                                    "role_name":  "运维工程师",
+                                    "menuIds":  [
+                                                    1,
+                                                    2,
+                                                    6,
+                                                    13,
+                                                    17,
+                                                    22,
+                                                    25
+                                                ]
+                                },
+                                {
+                                    "role_id":  7,
+                                    "role_code":  "DEPT_HEAD",
+                                    "role_name":  "部门主管",
+                                    "menuIds":  [
+                                                    1,
+                                                    2,
+                                                    6,
+                                                    13,
+                                                    17,
+                                                    22,
+                                                    25
+                                                ]
+                                },
+                                {
+                                    "role_id":  8,
+                                    "role_code":  "ANALYST",
+                                    "role_name":  "数据分析师",
+                                    "menuIds":  [
+                                                    1,
+                                                    2,
+                                                    6,
+                                                    13,
+                                                    25
+                                                ]
+                                }
+                            ]
+             }
+}

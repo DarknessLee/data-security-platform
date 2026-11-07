@@ -1,0 +1,19 @@
+﻿{
+    "code":  0,
+    "message":  "ok",
+    "data":  {
+                 "userTotal":  9,
+                 "userActive":  9,
+                 "userDisabled":  0,
+                 "lockedCount":  0,
+                 "roleTotal":  8,
+                 "deptTotal":  6,
+                 "menuTotal":  30,
+                 "topMenuTotal":  7,
+                 "apiTotal":  43,
+                 "loginFail7d":  28,
+                 "loginFailToday":  3,
+                 "lastLoginFailAt":  "2026-11-07 09:07:03",
+                 "generatedAt":  "2026-11-07 10:09:41"
+             }
+}

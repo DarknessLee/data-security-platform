@@ -1,0 +1,24 @@
+# 依赖
+node_modules/
+
+# 构建产物
+api/dist/
+web/dist/
+
+# 运行期证据（保留目录结构，忽略内容）
+.runtime/*
+!.runtime/.gitkeep
+
+# 截图与报告由 scripts/screenshots.mjs 生成，纳入交付
+!docs/screenshots/
+
+# 环境与本地配置
+api/.env
+web/.env.local
+*.log
+
+# 编辑器
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,911 @@
+﻿{
+    "code":  0,
+    "message":  "ok",
+    "data":  {
+                 "role":  {
+                              "id":  5,
+                              "role_code":  "AUDITOR",
+                              "role_name":  "审计员",
+                              "description":  "负责审计日志核查与报表审阅，只读权限",
+                              "data_scope":  "ALL",
+                              "status":  1
+                          },
+                 "menus":  [
+                               {
+                                   "id":  1,
+                                   "parent_id":  0,
+                                   "menu_name":  "平台总览",
+                                   "path":  "/dashboard",
+                                   "icon":  "Odometer",
+                                   "permission_code":  "dashboard",
+                                   "menu_type":  "目录",
+                                   "sort":  10,
+                                   "visible":  1,
+                                   "checked":  true,
+                                   "perm_read":  true,
+                                   "perm_write":  false,
+                                   "children":  [
+
+                                                ]
+                               },
+                               {
+                                   "id":  2,
+                                   "parent_id":  0,
+                                   "menu_name":  "数据资产治理",
+                                   "path":  "/asset",
+                                   "icon":  "Coin",
+                                   "permission_code":  "asset",
+                                   "menu_type":  "目录",
+                                   "sort":  20,
+                                   "visible":  1,
+                                   "checked":  true,
+                                   "perm_read":  true,
+                                   "perm_write":  false,
+                                   "children":  [
+                                                    {
+                                                        "id":  3,
+                                                        "parent_id":  2,
+                                                        "menu_name":  "资产台账",
+                                                        "path":  "/asset/list",
+                                                        "icon":  "Files",
+                                                        "permission_code":  null,
+                                                        "menu_type":  "菜单",
+                                                        "sort":  1,
+                                                        "visible":  1,
+                                                        "checked":  false,
+                                                        "perm_read":  false,
+                                                        "perm_write":  false,
+                                                        "children":  [
+
+                                                                     ]
+                                                    },
+                                                    {
+                                                        "id":  4,
+                                                        "parent_id":  2,
+                                                        "menu_name":  "分类分级",
+                                                        "path":  "/asset/categories",
+                                                        "icon":  "Grid",
+                                                        "permission_code":  null,
+                                                        "menu_type":  "菜单",
+                                                        "sort":  2,
+                                                        "visible":  1,
+                                                        "checked":  false,
+                                                        "perm_read":  false,
+                                                        "perm_write":  false,
+                                                        "children":  [
+
+                                                                     ]
+                                                    },
+                                                    {
+                                                        "id":  5,
+                                                        "parent_id":  2,
+                                                        "menu_name":  "生命周期",
+                                                        "path":  "/asset/lifecycle",
+                                                        "icon":  "Refresh",
+                                                        "permission_code":  null,
+                                                        "menu_type":  "菜单",
+                                                        "sort":  3,
+                                                        "visible":  1,
+                                                        "checked":  false,
+                                                        "perm_read":  false,
+                                                        "perm_write":  false,
+                                                        "children":  [
+
+                                                                     ]
+                                                    }
+                                                ]
+                               },
+                               {
+                                   "id":  6,
+                                   "parent_id":  0,
+                                   "menu_name":  "安全合规管理",
+                                   "path":  "/compliance",
+                                   "icon":  "DocumentChecked",
+                                   "permission_code":  "compliance",
+                                   "menu_type":  "目录",
+                                   "sort":  30,
+                                   "visible":  1,
+                                   "checked":  true,
+                                   "perm_read":  true,
+                                   "perm_write":  false,
+                                   "children":  [
+                                                    {
+                                                        "id":  7,
+                                                        "parent_id":  6,
+                                                        "menu_name":  "合规规则库",
+                                                        "path":  "/compliance/rules",
+                                                        "icon":  "Notebook",
+                                                        "permission_code":  null,
+                                                        "menu_type":  "菜单",
+                                                        "sort":  1,
+                                                        "visible":  1,
+                                                        "checked":  false,
+                                                        "perm_read":  false,
+                                                        "perm_write":  false,
+                                                        "children":  [
+
+                                                                     ]
+                                                    },
+                                                    {
+                                                        "id":  8,
+                                                        "parent_id":  6,
+                                                        "menu_name":  "合规检查",
+                                                        "path":  "/compliance/checks",
+                                                        "icon":  "Finished",
+                                                        "permission_code":  null,
+                                                        "menu_type":  "菜单",
+                                                        "sort":  2,
+                                                        "visible":  1,
+                                                        "checked":  false,
+                                                        "perm_read":  false,
+                                                        "perm_write":  false,
+                                                        "children":  [
+
+                                                                     ]
+                                                    },
+                                                    {
+                                                        "id":  9,
+                                                        "parent_id":  6,
+                                                        "menu_name":  "整改跟踪",
+                                                        "path":  "/compliance/rectify",
+                                                        "icon":  "EditPen",
+                                                        "permission_code":  null,
+                                                        "menu_type":  "菜单",
+                                                        "sort":  3,
+                                                        "visible":  1,
+                                                        "checked":  false,
+                                                        "perm_read":  false,
+                                                        "perm_write":  false,
+                                                        "children":  [
+
+                                                                     ]
+                                                    },
+                                                    {
+                                                        "id":  10,
+                                                        "parent_id":  6,
+                                                        "menu_name":  "脱敏管理",
+                                                        "path":  "/compliance/masking",
+                                                        "icon":  "Hide",
+                                                        "permission_code":  null,
+                                                        "menu_type":  "菜单",
+                                                        "sort":  4,
+                                                        "visible":  1,
+                                                        "checked":  false,
+                                                        "perm_read":  false,
+                                                        "perm_write":  false,
+                                                        "children":  [
+
+                                                                     ]
+                                                    },
+                                                    {
+                                                        "id":  11,
+                                                        "parent_id":  6,
+                                                        "menu_name":  "共享审批",
+                                                        "path":  "/compliance/approvals",
+                                                        "icon":  "Stamp",
+                                                        "permission_code":  null,
+                                                        "menu_type":  "菜单",
+                                                        "sort":  5,
+                                                        "visible":  1,
+                                                        "checked":  false,
+                                                        "perm_read":  false,
+                                                        "perm_write":  false,
+                                                        "children":  [
+
+                                                                     ]
+                                                    },
+                                                    {
+                                                        "id":  12,
+                                                        "parent_id":  6,
+                                                        "menu_name":  "合规报告",
+                                                        "path":  "/compliance/report",
+                                                        "icon":  "DataAnalysis",
+                                                        "permission_code":  null,
+                                                        "menu_type":  "菜单",
+                                                        "sort":  6,
+                                                        "visible":  1,
+                                                        "checked":  false,
+                                                        "perm_read":  false,
+                                                        "perm_write":  false,
+                                                        "children":  [
+
+                                                                     ]
+                                                    }
+                                                ]
+                               },
+                               {
+                                   "id":  13,
+                                   "parent_id":  0,
+                                   "menu_name":  "智能风险监测",
+                                   "path":  "/risk",
+                                   "icon":  "Warning",
+                                   "permission_code":  "risk",
+                                   "menu_type":  "目录",
+                                   "sort":  40,
+                                   "visible":  1,
+                                   "checked":  true,
+                                   "perm_read":  true,
+                                   "perm_write":  false,
+                                   "children":  [
+                                                    {
+                                                        "id":  14,
+                                                        "parent_id":  13,
+                                                        "menu_name":  "风险事件",
+                                                        "path":  "/risk/events",
+                                                        "icon":  "Bell",
+                                                        "permission_code":  null,
+                                                        "menu_type":  "菜单",
+                                                        "sort":  1,
+                                                        "visible":  1,
+                                                        "checked":  false,
+                                                        "perm_read":  false,
+                                                        "perm_write":  false,
+                                                        "children":  [
+
+                                                                     ]
+                                                    },
+                                                    {
+                                                        "id":  15,
+                                                        "parent_id":  13,
+                                                        "menu_name":  "监测规则",
+                                                        "path":  "/risk/rules",
+                                                        "icon":  "SetUp",
+                                                        "permission_code":  null,
+                                                        "menu_type":  "菜单",
+                                                        "sort":  2,
+                                                        "visible":  1,
+                                                        "checked":  false,
+                                                        "perm_read":  false,
+                                                        "perm_write":  false,
+                                                        "children":  [
+
+                                                                     ]
+                                                    },
+                                                    {
+                                                        "id":  16,
+                                                        "parent_id":  13,
+                                                        "menu_name":  "实时监控",
+                                                        "path":  "/risk/realtime",
+                                                        "icon":  "Histogram",
+                                                        "permission_code":  null,
+                                                        "menu_type":  "菜单",
+                                                        "sort":  3,
+                                                        "visible":  1,
+                                                        "checked":  false,
+                                                        "perm_read":  false,
+                                                        "perm_write":  false,
+                                                        "children":  [
+
+                                                                     ]
+                                                    }
+                                                ]
+                               },
+                               {
+                                   "id":  17,
+                                   "parent_id":  0,
+                                   "menu_name":  "权限安全管控",
+                                   "path":  "/rbac",
+                                   "icon":  "UserFilled",
+                                   "permission_code":  "rbac",
+                                   "menu_type":  "目录",
+                                   "sort":  50,
+                                   "visible":  1,
+                                   "checked":  true,
+                                   "perm_read":  true,
+                                   "perm_write":  false,
+                                   "children":  [
+                                                    {
+                                                        "id":  18,
+                                                        "parent_id":  17,
+                                                        "menu_name":  "用户管理",
+                                                        "path":  "/rbac/users",
+                                                        "icon":  "User",
+                                                        "permission_code":  null,
+                                                        "menu_type":  "菜单",
+                                                        "sort":  1,
+                                                        "visible":  1,
+                                                        "checked":  false,
+                                                        "perm_read":  false,
+                                                        "perm_write":  false,
+                                                        "children":  [
+
+                                                                     ]
+                                                    },
+                                                    {
+                                                        "id":  19,
+                                                        "parent_id":  17,
+                                                        "menu_name":  "角色管理",
+                                                        "path":  "/rbac/roles",
+                                                        "icon":  "Avatar",
+                                                        "permission_code":  null,
+                                                        "menu_type":  "菜单",
+                                                        "sort":  2,
+                                                        "visible":  1,
+                                                        "checked":  false,
+                                                        "perm_read":  false,
+                                                        "perm_write":  false,
+                                                        "children":  [
+
+                                                                     ]
+                                                    },
+                                                    {
+                                                        "id":  20,
+                                                        "parent_id":  17,
+                                                        "menu_name":  "菜单权限",
+                                                        "path":  "/rbac/menus",
+                                                        "icon":  "Menu",
+                                                        "permission_code":  null,
+                                                        "menu_type":  "菜单",
+                                                        "sort":  3,
+                                                        "visible":  1,
+                                                        "checked":  false,
+                                                        "perm_read":  false,
+                                                        "perm_write":  false,
+                                                        "children":  [
+
+                                                                     ]
+                                                    },
+                                                    {
+                                                        "id":  21,
+                                                        "parent_id":  17,
+                                                        "menu_name":  "接口权限",
+                                                        "path":  "/rbac/apis",
+                                                        "icon":  "Connection",
+                                                        "permission_code":  null,
+                                                        "menu_type":  "菜单",
+                                                        "sort":  4,
+                                                        "visible":  1,
+                                                        "checked":  false,
+                                                        "perm_read":  false,
+                                                        "perm_write":  false,
+                                                        "children":  [
+
+                                                                     ]
+                                                    }
+                                                ]
+                               },
+                               {
+                                   "id":  22,
+                                   "parent_id":  0,
+                                   "menu_name":  "安全审计追溯",
+                                   "path":  "/audit",
+                                   "icon":  "Tickets",
+                                   "permission_code":  "audit",
+                                   "menu_type":  "目录",
+                                   "sort":  60,
+                                   "visible":  1,
+                                   "checked":  true,
+                                   "perm_read":  true,
+                                   "perm_write":  false,
+                                   "children":  [
+                                                    {
+                                                        "id":  23,
+                                                        "parent_id":  22,
+                                                        "menu_name":  "审计日志",
+                                                        "path":  "/audit/logs",
+                                                        "icon":  "List",
+                                                        "permission_code":  null,
+                                                        "menu_type":  "菜单",
+                                                        "sort":  1,
+                                                        "visible":  1,
+                                                        "checked":  false,
+                                                        "perm_read":  false,
+                                                        "perm_write":  false,
+                                                        "children":  [
+
+                                                                     ]
+                                                    },
+                                                    {
+                                                        "id":  24,
+                                                        "parent_id":  22,
+                                                        "menu_name":  "审计报表",
+                                                        "path":  "/audit/reports",
+                                                        "icon":  "TrendCharts",
+                                                        "permission_code":  null,
+                                                        "menu_type":  "菜单",
+                                                        "sort":  2,
+                                                        "visible":  1,
+                                                        "checked":  false,
+                                                        "perm_read":  false,
+                                                        "perm_write":  false,
+                                                        "children":  [
+
+                                                                     ]
+                                                    }
+                                                ]
+                               },
+                               {
+                                   "id":  25,
+                                   "parent_id":  0,
+                                   "menu_name":  "服务保障运维",
+                                   "path":  "/ops",
+                                   "icon":  "Monitor",
+                                   "permission_code":  "ops",
+                                   "menu_type":  "目录",
+                                   "sort":  70,
+                                   "visible":  1,
+                                   "checked":  true,
+                                   "perm_read":  true,
+                                   "perm_write":  false,
+                                   "children":  [
+                                                    {
+                                                        "id":  26,
+                                                        "parent_id":  25,
+                                                        "menu_name":  "运行监控",
+                                                        "path":  "/ops/monitor",
+                                                        "icon":  "Cpu",
+                                                        "permission_code":  null,
+                                                        "menu_type":  "菜单",
+                                                        "sort":  1,
+                                                        "visible":  1,
+                                                        "checked":  false,
+                                                        "perm_read":  false,
+                                                        "perm_write":  false,
+                                                        "children":  [
+
+                                                                     ]
+                                                    },
+                                                    {
+                                                        "id":  27,
+                                                        "parent_id":  25,
+                                                        "menu_name":  "运维工单",
+                                                        "path":  "/ops/tickets",
+                                                        "icon":  "Service",
+                                                        "permission_code":  null,
+                                                        "menu_type":  "菜单",
+                                                        "sort":  2,
+                                                        "visible":  1,
+                                                        "checked":  false,
+                                                        "perm_read":  false,
+                                                        "perm_write":  false,
+                                                        "children":  [
+
+                                                                     ]
+                                                    },
+                                                    {
+                                                        "id":  28,
+                                                        "parent_id":  25,
+                                                        "menu_name":  "数据备份",
+                                                        "path":  "/ops/backups",
+                                                        "icon":  "FolderOpened",
+                                                        "permission_code":  null,
+                                                        "menu_type":  "菜单",
+                                                        "sort":  3,
+                                                        "visible":  1,
+                                                        "checked":  false,
+                                                        "perm_read":  false,
+                                                        "perm_write":  false,
+                                                        "children":  [
+
+                                                                     ]
+                                                    },
+                                                    {
+                                                        "id":  29,
+                                                        "parent_id":  25,
+                                                        "menu_name":  "平台配置",
+                                                        "path":  "/ops/configs",
+                                                        "icon":  "Setting",
+                                                        "permission_code":  null,
+                                                        "menu_type":  "菜单",
+                                                        "sort":  4,
+                                                        "visible":  1,
+                                                        "checked":  false,
+                                                        "perm_read":  false,
+                                                        "perm_write":  false,
+                                                        "children":  [
+
+                                                                     ]
+                                                    },
+                                                    {
+                                                        "id":  30,
+                                                        "parent_id":  25,
+                                                        "menu_name":  "版本管理",
+                                                        "path":  "/ops/versions",
+                                                        "icon":  "Box",
+                                                        "permission_code":  null,
+                                                        "menu_type":  "菜单",
+                                                        "sort":  5,
+                                                        "visible":  1,
+                                                        "checked":  false,
+                                                        "perm_read":  false,
+                                                        "perm_write":  false,
+                                                        "children":  [
+
+                                                                     ]
+                                                    }
+                                                ]
+                               }
+                           ],
+                 "apis":  [
+                              {
+                                  "id":  1,
+                                  "api_code":  "auth:post:auth_login",
+                                  "api_name":  "登录认证",
+                                  "api_group":  "auth",
+                                  "method":  "POST",
+                                  "path":  "/api/auth/login",
+                                  "checked":  false
+                              },
+                              {
+                                  "id":  2,
+                                  "api_code":  "auth:post:auth_logout",
+                                  "api_name":  "退出登录",
+                                  "api_group":  "auth",
+                                  "method":  "POST",
+                                  "path":  "/api/auth/logout",
+                                  "checked":  false
+                              },
+                              {
+                                  "id":  3,
+                                  "api_code":  "auth:get:auth_profile",
+                                  "api_name":  "读取当前用户",
+                                  "api_group":  "auth",
+                                  "method":  "GET",
+                                  "path":  "/api/auth/profile",
+                                  "checked":  false
+                              },
+                              {
+                                  "id":  4,
+                                  "api_code":  "auth:get:auth_menus",
+                                  "api_name":  "读取可见菜单",
+                                  "api_group":  "auth",
+                                  "method":  "GET",
+                                  "path":  "/api/auth/menus",
+                                  "checked":  false
+                              },
+                              {
+                                  "id":  5,
+                                  "api_code":  "dashboard:get:dashboard_overview",
+                                  "api_name":  "平台总览",
+                                  "api_group":  "dashboard",
+                                  "method":  "GET",
+                                  "path":  "/api/dashboard/overview",
+                                  "checked":  true
+                              },
+                              {
+                                  "id":  6,
+                                  "api_code":  "dashboard:get:dashboard_trend",
+                                  "api_name":  "趋势分析",
+                                  "api_group":  "dashboard",
+                                  "method":  "GET",
+                                  "path":  "/api/dashboard/trend",
+                                  "checked":  true
+                              },
+                              {
+                                  "id":  7,
+                                  "api_code":  "asset:get:assets",
+                                  "api_name":  "资产列表",
+                                  "api_group":  "asset",
+                                  "method":  "GET",
+                                  "path":  "/api/assets",
+                                  "checked":  true
+                              },
+                              {
+                                  "id":  8,
+                                  "api_code":  "asset:get:assets__id",
+                                  "api_name":  "资产详情",
+                                  "api_group":  "asset",
+                                  "method":  "GET",
+                                  "path":  "/api/assets/:id",
+                                  "checked":  true
+                              },
+                              {
+                                  "id":  9,
+                                  "api_code":  "asset:post:assets",
+                                  "api_name":  "新增资产",
+                                  "api_group":  "asset",
+                                  "method":  "POST",
+                                  "path":  "/api/assets",
+                                  "checked":  false
+                              },
+                              {
+                                  "id":  10,
+                                  "api_code":  "asset:put:assets__id",
+                                  "api_name":  "编辑资产",
+                                  "api_group":  "asset",
+                                  "method":  "PUT",
+                                  "path":  "/api/assets/:id",
+                                  "checked":  false
+                              },
+                              {
+                                  "id":  11,
+                                  "api_code":  "asset:post:assets_scan",
+                                  "api_name":  "资产扫描",
+                                  "api_group":  "asset",
+                                  "method":  "POST",
+                                  "path":  "/api/assets/scan",
+                                  "checked":  false
+                              },
+                              {
+                                  "id":  12,
+                                  "api_code":  "asset:get:assets_stats",
+                                  "api_name":  "资产统计",
+                                  "api_group":  "asset",
+                                  "method":  "GET",
+                                  "path":  "/api/assets/stats",
+                                  "checked":  true
+                              },
+                              {
+                                  "id":  13,
+                                  "api_code":  "asset:get:assets__id_lifecycle",
+                                  "api_name":  "生命周期记录",
+                                  "api_group":  "asset",
+                                  "method":  "GET",
+                                  "path":  "/api/assets/:id/lifecycle",
+                                  "checked":  true
+                              },
+                              {
+                                  "id":  14,
+                                  "api_code":  "compliance:get:compliance_rules",
+                                  "api_name":  "规则库列表",
+                                  "api_group":  "compliance",
+                                  "method":  "GET",
+                                  "path":  "/api/compliance/rules",
+                                  "checked":  true
+                              },
+                              {
+                                  "id":  15,
+                                  "api_code":  "compliance:post:compliance_rules",
+                                  "api_name":  "规则维护",
+                                  "api_group":  "compliance",
+                                  "method":  "POST",
+                                  "path":  "/api/compliance/rules",
+                                  "checked":  false
+                              },
+                              {
+                                  "id":  16,
+                                  "api_code":  "compliance:post:compliance_checks_run",
+                                  "api_name":  "执行合规检查",
+                                  "api_group":  "compliance",
+                                  "method":  "POST",
+                                  "path":  "/api/compliance/checks/run",
+                                  "checked":  false
+                              },
+                              {
+                                  "id":  17,
+                                  "api_code":  "compliance:get:compliance_checks",
+                                  "api_name":  "检查结果",
+                                  "api_group":  "compliance",
+                                  "method":  "GET",
+                                  "path":  "/api/compliance/checks",
+                                  "checked":  true
+                              },
+                              {
+                                  "id":  18,
+                                  "api_code":  "compliance:put:compliance_rectifications__id",
+                                  "api_name":  "整改单更新",
+                                  "api_group":  "compliance",
+                                  "method":  "PUT",
+                                  "path":  "/api/compliance/rectifications/:id",
+                                  "checked":  false
+                              },
+                              {
+                                  "id":  19,
+                                  "api_code":  "compliance:put:compliance_masking-rules__id",
+                                  "api_name":  "脱敏规则维护",
+                                  "api_group":  "compliance",
+                                  "method":  "PUT",
+                                  "path":  "/api/compliance/masking-rules/:id",
+                                  "checked":  false
+                              },
+                              {
+                                  "id":  20,
+                                  "api_code":  "compliance:post:compliance_approvals__id_decide",
+                                  "api_name":  "共享审批处理",
+                                  "api_group":  "compliance",
+                                  "method":  "POST",
+                                  "path":  "/api/compliance/approvals/:id/decide",
+                                  "checked":  false
+                              },
+                              {
+                                  "id":  21,
+                                  "api_code":  "compliance:get:compliance_report",
+                                  "api_name":  "合规报告",
+                                  "api_group":  "compliance",
+                                  "method":  "GET",
+                                  "path":  "/api/compliance/report",
+                                  "checked":  true
+                              },
+                              {
+                                  "id":  22,
+                                  "api_code":  "risk:get:risk_events",
+                                  "api_name":  "风险事件列表",
+                                  "api_group":  "risk",
+                                  "method":  "GET",
+                                  "path":  "/api/risk/events",
+                                  "checked":  true
+                              },
+                              {
+                                  "id":  23,
+                                  "api_code":  "risk:post:risk_events__id_handle",
+                                  "api_name":  "风险事件处置",
+                                  "api_group":  "risk",
+                                  "method":  "POST",
+                                  "path":  "/api/risk/events/:id/handle",
+                                  "checked":  false
+                              },
+                              {
+                                  "id":  24,
+                                  "api_code":  "risk:post:risk_rules",
+                                  "api_name":  "监测规则维护",
+                                  "api_group":  "risk",
+                                  "method":  "POST",
+                                  "path":  "/api/risk/rules",
+                                  "checked":  false
+                              },
+                              {
+                                  "id":  25,
+                                  "api_code":  "risk:get:risk_stats",
+                                  "api_name":  "风险统计",
+                                  "api_group":  "risk",
+                                  "method":  "GET",
+                                  "path":  "/api/risk/stats",
+                                  "checked":  true
+                              },
+                              {
+                                  "id":  26,
+                                  "api_code":  "rbac:get:rbac_users",
+                                  "api_name":  "用户列表",
+                                  "api_group":  "rbac",
+                                  "method":  "GET",
+                                  "path":  "/api/rbac/users",
+                                  "checked":  true
+                              },
+                              {
+                                  "id":  27,
+                                  "api_code":  "rbac:post:rbac_users",
+                                  "api_name":  "新增用户",
+                                  "api_group":  "rbac",
+                                  "method":  "POST",
+                                  "path":  "/api/rbac/users",
+                                  "checked":  false
+                              },
+                              {
+                                  "id":  28,
+                                  "api_code":  "rbac:put:rbac_users__id",
+                                  "api_name":  "编辑用户",
+                                  "api_group":  "rbac",
+                                  "method":  "PUT",
+                                  "path":  "/api/rbac/users/:id",
+                                  "checked":  false
+                              },
+                              {
+                                  "id":  29,
+                                  "api_code":  "rbac:post:rbac_users__id_reset-password",
+                                  "api_name":  "重置密码",
+                                  "api_group":  "rbac",
+                                  "method":  "POST",
+                                  "path":  "/api/rbac/users/:id/reset-password",
+                                  "checked":  false
+                              },
+                              {
+                                  "id":  30,
+                                  "api_code":  "rbac:put:rbac_roles__id",
+                                  "api_name":  "角色维护",
+                                  "api_group":  "rbac",
+                                  "method":  "PUT",
+                                  "path":  "/api/rbac/roles/:id",
+                                  "checked":  false
+                              },
+                              {
+                                  "id":  31,
+                                  "api_code":  "rbac:put:rbac_roles__id_menus",
+                                  "api_name":  "角色菜单授权",
+                                  "api_group":  "rbac",
+                                  "method":  "PUT",
+                                  "path":  "/api/rbac/roles/:id/menus",
+                                  "checked":  false
+                              },
+                              {
+                                  "id":  32,
+                                  "api_code":  "rbac:get:rbac_menus",
+                                  "api_name":  "菜单列表",
+                                  "api_group":  "rbac",
+                                  "method":  "GET",
+                                  "path":  "/api/rbac/menus",
+                                  "checked":  true
+                              },
+                              {
+                                  "id":  33,
+                                  "api_code":  "audit:get:audit_logs",
+                                  "api_name":  "审计日志查询",
+                                  "api_group":  "audit",
+                                  "method":  "GET",
+                                  "path":  "/api/audit/logs",
+                                  "checked":  true
+                              },
+                              {
+                                  "id":  34,
+                                  "api_code":  "audit:get:audit_logs_export",
+                                  "api_name":  "审计日志导出",
+                                  "api_group":  "audit",
+                                  "method":  "GET",
+                                  "path":  "/api/audit/logs/export",
+                                  "checked":  true
+                              },
+                              {
+                                  "id":  35,
+                                  "api_code":  "audit:get:audit_stats",
+                                  "api_name":  "审计统计",
+                                  "api_group":  "audit",
+                                  "method":  "GET",
+                                  "path":  "/api/audit/stats",
+                                  "checked":  true
+                              },
+                              {
+                                  "id":  36,
+                                  "api_code":  "audit:post:audit_reports_generate",
+                                  "api_name":  "审计报表生成",
+                                  "api_group":  "audit",
+                                  "method":  "POST",
+                                  "path":  "/api/audit/reports/generate",
+                                  "checked":  false
+                              },
+                              {
+                                  "id":  37,
+                                  "api_code":  "ops:get:ops_health",
+                                  "api_name":  "系统健康度",
+                                  "api_group":  "ops",
+                                  "method":  "GET",
+                                  "path":  "/api/ops/health",
+                                  "checked":  true
+                              },
+                              {
+                                  "id":  38,
+                                  "api_code":  "ops:get:ops_metrics",
+                                  "api_name":  "监控指标",
+                                  "api_group":  "ops",
+                                  "method":  "GET",
+                                  "path":  "/api/ops/metrics",
+                                  "checked":  true
+                              },
+                              {
+                                  "id":  39,
+                                  "api_code":  "ops:get:ops_tickets",
+                                  "api_name":  "工单列表",
+                                  "api_group":  "ops",
+                                  "method":  "GET",
+                                  "path":  "/api/ops/tickets",
+                                  "checked":  true
+                              },
+                              {
+                                  "id":  40,
+                                  "api_code":  "ops:put:ops_tickets__id",
+                                  "api_name":  "工单处理",
+                                  "api_group":  "ops",
+                                  "method":  "PUT",
+                                  "path":  "/api/ops/tickets/:id",
+                                  "checked":  false
+                              },
+                              {
+                                  "id":  41,
+                                  "api_code":  "ops:post:ops_backups",
+                                  "api_name":  "备份执行",
+                                  "api_group":  "ops",
+                                  "method":  "POST",
+                                  "path":  "/api/ops/backups",
+                                  "checked":  false
+                              },
+                              {
+                                  "id":  42,
+                                  "api_code":  "ops:put:ops_configs__key",
+                                  "api_name":  "配置维护",
+                                  "api_group":  "ops",
+                                  "method":  "PUT",
+                                  "path":  "/api/ops/configs/:key",
+                                  "checked":  false
+                              },
+                              {
+                                  "id":  43,
+                                  "api_code":  "ops:put:ops_notifications__id_read",
+                                  "api_name":  "通知已读",
+                                  "api_group":  "ops",
+                                  "method":  "PUT",
+                                  "path":  "/api/ops/notifications/:id/read",
+                                  "checked":  false
+                              }
+                          ],
+                 "menuCount":  7,
+                 "apiCount":  19
+             }
+}
