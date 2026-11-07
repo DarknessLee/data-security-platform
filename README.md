@@ -111,7 +111,7 @@ npm run build        # RESULT=PASS（api tsc + web vue-tsc/vite build）
 npm run test:api     # RESULT=PASS passed=74 failed=0
 npm run test:e2e     # 45 passed / 0 failed（2.4 分钟）
 npm run check:docs   # RESULT=PASS
-npm run verify       # 全量串行门禁（待回填汇总）
+npm run verify       # RESULT=PASS passed=7 failed=0 用时=174.6s（7 项全 PASS）
 ```
 
 ## 文档索引
@@ -133,4 +133,4 @@ npm run verify       # 全量串行门禁（待回填汇总）
 1. 资产扫描、监控采集、备份、脱敏、哈希链校验为**演示级近似**（[DECISIONS](docs/DECISIONS.md) D-012）。
 2. 单机单实例演示，不承诺 99.9% 可用率与并发指标（[PLAN-MATRIX](docs/PLAN-MATRIX.md) H-02）。
 3. K8s、多租户、真实脱敏引擎、SIEM、软著登记材料不在本期范围（D-015）。
-4. 前端 25 个视图与 25 张截图已齐备；`npm run verify` 汇总与 Git 提交号待回填，进度以 [STATUS](docs/STATUS.md) 为准。
+4. 前端 25 个视图与 25 张截图已齐备；`verify` 7/7 PASS 与提交号 92dcce6 已回填，进度以 [STATUS](docs/STATUS.md) 为准。
