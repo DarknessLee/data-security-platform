@@ -123,7 +123,7 @@
             <span class="muted">{{ fmtDateTime(row.last_access_at) }}</span>
           </template>
         </el-table-column>
-        <el-table-column label="操作" width="220" fixed="right">
+        <el-table-column label="操作" width="260" fixed="right">
           <template #default="{ row }">
             <el-button link type="primary" @click.stop="openDetail(row)">详情</el-button>
             <template v-if="auth.canWrite('asset')">
