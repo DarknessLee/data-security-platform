@@ -58,21 +58,91 @@ npm run dev
 | 7 | depthead 部门主管 | 部门视角看板与资产 | 仅见本部门数据 |
 | 8 | analyst 数据分析师 | 看板与资产只读 | 访问权限/审计页面被拒（403） |
 
-## 功能截图
+## 业务流程串览（内嵌截图）
 
-截图统一存放于 `docs/screenshots/`，由 `npm run screenshots` 生成：登录页 1 张 + 业务页面 24 张，共 25 张（1440×900，命名 `NN-<页面>.png`），`RESULT=PASS count=25`。
+下面按"资产 → 合规 → 风险 → 权限 → 审计 → 运维"的治理闭环串起一条 8 步业务流程，每一步直接嵌入对应的功能页面截图（所有截图存放于 `docs/screenshots/`，由 `npm run screenshots` 生成，单张 1440×900）。
 
-| 模块 | 截图文件 |
-| --- | --- |
-| 登录 / 看板 | [01-login.png](docs/screenshots/01-login.png)、[02-dashboard.png](docs/screenshots/02-dashboard.png) |
-| 数据资产（3） | [03-asset-list.png](docs/screenshots/03-asset-list.png)、[04-asset-categories.png](docs/screenshots/04-asset-categories.png)、[05-asset-lifecycle.png](docs/screenshots/05-asset-lifecycle.png) |
-| 安全合规（6） | [06-compliance-rules.png](docs/screenshots/06-compliance-rules.png)、[07-compliance-checks.png](docs/screenshots/07-compliance-checks.png)、[08-compliance-rectify.png](docs/screenshots/08-compliance-rectify.png)、[09-compliance-masking.png](docs/screenshots/09-compliance-masking.png)、[10-compliance-approvals.png](docs/screenshots/10-compliance-approvals.png)、[11-compliance-report.png](docs/screenshots/11-compliance-report.png) |
-| 智能风险（3） | [12-risk-events.png](docs/screenshots/12-risk-events.png)、[13-risk-rules.png](docs/screenshots/13-risk-rules.png)、[14-risk-realtime.png](docs/screenshots/14-risk-realtime.png) |
-| 权限管控（4） | [15-rbac-users.png](docs/screenshots/15-rbac-users.png)、[16-rbac-roles.png](docs/screenshots/16-rbac-roles.png)、[17-rbac-menus.png](docs/screenshots/17-rbac-menus.png)、[18-rbac-apis.png](docs/screenshots/18-rbac-apis.png) |
-| 安全审计（2） | [19-audit-logs.png](docs/screenshots/19-audit-logs.png)、[20-audit-reports.png](docs/screenshots/20-audit-reports.png) |
-| 服务保障（5） | [21-ops-monitor.png](docs/screenshots/21-ops-monitor.png)、[22-ops-tickets.png](docs/screenshots/22-ops-tickets.png)、[23-ops-backups.png](docs/screenshots/23-ops-backups.png)、[24-ops-configs.png](docs/screenshots/24-ops-configs.png)、[25-ops-versions.png](docs/screenshots/25-ops-versions.png) |
+### ① 统一身份登录 → ② 安全运营总览
 
-> `docs/screenshots/` 中另有 6 张合规模块早期归档图（`compliance-*.png`），内容与 `06`～`11` 对应。
+登录页走 JWT + 密码策略 + 连续 5 次失败锁定 30 分钟，登录后自动进入总览看板：一屏聚合资产、敏感资产、未闭环风险、待办工单、合规通过率，数字来自 27 张表实时聚合（缓存 20 秒）。
+
+<div align="center">
+<img src="docs/screenshots/01-login.png" width="48%" />　<img src="docs/screenshots/02-dashboard.png" width="48%" />
+</div>
+
+### ③ 数据资产治理（台账 → 分类分级 → 生命周期）
+
+分级分类是治理起点：公开 / 内部 / 机密 / 绝密四级，调级会写生命周期留痕。页面包含台账筛选、调级、标签、生命周期轨迹、模拟扫描与导出。
+
+<div align="center">
+<img src="docs/screenshots/03-asset-list.png" width="48%" />　<img src="docs/screenshots/04-asset-categories.png" width="48%" />
+</div>
+
+<div align="center">
+<img src="docs/screenshots/05-asset-lifecycle.png" width="96%" />
+</div>
+
+### ④ 安全合规管理（规则库 → 执行检查 → 整改闭环 → 脱敏 → 共享审批 → 合规报告）
+
+规则依据《数据安全法》《个人信息保护法》《等保 2.0》与行业规范；执行检查生成批次，不通过项进入整改池，整改闭环后自动更新合规报告。
+
+<div align="center">
+<img src="docs/screenshots/06-compliance-rules.png" width="48%" />　<img src="docs/screenshots/07-compliance-checks.png" width="48%" />
+</div>
+
+<div align="center">
+<img src="docs/screenshots/08-compliance-rectify.png" width="48%" />　<img src="docs/screenshots/09-compliance-masking.png" width="48%" />
+</div>
+
+<div align="center">
+<img src="docs/screenshots/10-compliance-approvals.png" width="48%" />　<img src="docs/screenshots/11-compliance-report.png" width="48%" />
+</div>
+
+### ⑤ 智能风险监测（风险事件 → 规则命中 → 实时监控）
+
+覆盖越权访问、批量导出、异常登录、数据篡改、敏感外传五类异常事件，四级预警，处置全程留痕，看板 20 秒内同步未闭环数。
+
+<div align="center">
+<img src="docs/screenshots/12-risk-events.png" width="48%" />　<img src="docs/screenshots/13-risk-rules.png" width="48%" />
+</div>
+
+<div align="center">
+<img src="docs/screenshots/14-risk-realtime.png" width="96%" />
+</div>
+
+### ⑥ 权限安全管控（用户 → 角色 → 菜单 → 接口，RBAC 四级 + 数据范围）
+
+RBAC 四级：用户 - 角色 - 菜单/按钮 - 接口；数据范围 ALL / DEPT / SELF / CUSTOM 再叠加一层隔离。角色授权后需退出重登才能生效，体现"重新认证"。
+
+<div align="center">
+<img src="docs/screenshots/15-rbac-users.png" width="48%" />　<img src="docs/screenshots/16-rbac-roles.png" width="48%" />
+</div>
+
+<div align="center">
+<img src="docs/screenshots/17-rbac-menus.png" width="48%" />　<img src="docs/screenshots/18-rbac-apis.png" width="48%" />
+</div>
+
+### ⑦ 安全审计追溯（四类日志 → SHA-256 完整性校验 → 报表）
+
+操作 / 登录 / 合规 / 风险四类日志全量留痕；链校验返回"链完整"，用于表达"不可篡改"的校验思路；支持日 / 周 / 月 / 年报表导出。
+
+<div align="center">
+<img src="docs/screenshots/19-audit-logs.png" width="48%" />　<img src="docs/screenshots/20-audit-reports.png" width="48%" />
+</div>
+
+### ⑧ 服务保障运维（监控 → 工单闭环 → 备份 → 配置 → 版本）
+
+工单四态流转（新建 → 受理 → 处理 → 验证 → 关闭）并写轨迹；监控页 CPU / 内存 / QPS 有 24h 趋势；配合定时备份、配置与版本管理，构成服务保障闭环。
+
+<div align="center">
+<img src="docs/screenshots/21-ops-monitor.png" width="48%" />　<img src="docs/screenshots/22-ops-tickets.png" width="48%" />
+</div>
+
+<div align="center">
+<img src="docs/screenshots/23-ops-backups.png" width="31%" />　<img src="docs/screenshots/24-ops-configs.png" width="31%" />　<img src="docs/screenshots/25-ops-versions.png" width="31%" />
+</div>
+
+> `docs/screenshots/` 目录下另外包含 6 张合规模块早期归档图（`compliance-*.png`），内容与 06～11 对应，可对照。
 
 ## 目录结构
 
