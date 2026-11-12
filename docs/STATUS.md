@@ -10,12 +10,12 @@
 | --- | --- |
 | 项目版本 | V1.0.0（`sys_config.platform.version`） |
 | 当前阶段 | M3 验收（全量 verify 7/7 PASS，待验收清单签字） |
-| 最新提交 | 92dcce6（M2/M3 交付）；前一提交 9a55663（M1 基座） |
+| 最新提交 | 6945d9c（统一对外表述口径）；前一提交 92dcce6（M2/M3 交付）、9a55663（M1 基座） |
 | 数据门禁 | `node api/db/validate.mjs` → `RESULT=PASS passed=69 failed=0`（第 69 项：已授权模块均包含二级菜单） |
 | 接口口径 | 已注册路由 **83 条**：业务接口 **81 条**（assets 12、compliance 18、risk 10、rbac 14、audit 8、ops 12、dashboard 1、auth 6）+ 系统接口 2 条（`/health`、`/meta`）；契约 V1.0 的 82 条验收基线已全部覆盖，清单见 `docs/接口契约.md` 第十一章（V1.2） |
 | 门禁链 | `db:reset → db:validate（69/69）→ build（RESULT=PASS）→ test:api（74/74）→ test:e2e（45/45，2.4 分钟）→ check:docs（76/76）→ verify（RESULT=PASS passed=7 failed=0 用时=174.6s）` |
 | 最近验收 | E2E 6 个 spec 共 45 条全 PASS（asset 8、audit 7、compliance 7、ops 8、rbac 8、risk 7）；截图 `RESULT=PASS count=25`；admin 登录返回 7 个顶级菜单（子项 0/3/6/3/4/2/5） |
-| 更新时间 | 2026-11-07 10:45 |
+| 更新时间 | 2026-11-12 10:05 |
 
 ## 二、数据基线重建与关键计数
 
@@ -98,7 +98,7 @@ node api/db/validate.mjs    # 69 项计数/约束/外键/数据规范断言，�
 | L-01 | 前端 16 个业务页面曾为骨架占位 | 已修复：25 个视图（登录 + 24 业务页）全部实装，无"页面建设中"占位 |
 | L-02 | Web 构建曾有 3 个页面 9 处 `el-table` 行类型错误 | 已修复：`npm run build` → `RESULT=PASS`（api tsc 0 错误、web vue-tsc 0 错误 + vite build 成功） |
 | L-03 | 交付截图曾缺失 | 已修复：`npm run screenshots` → `RESULT=PASS count=25`（`01-login.png`～`25-ops-versions.png`），README 截图区已回填 |
-| L-04 | 目录曾未初始化 Git 仓库 | 已修复：Git 已初始化，9a55663（M1）+ 92dcce6（M2/M3） |
+| L-04 | 目录曾未初始化 Git 仓库 | 已修复：Git 已初始化，9a55663（M1）+ 92dcce6（M2/M3）+ 6945d9c（表述口径统一） |
 | L-05 | Docker CLI 未加入当前 PowerShell 的 PATH，但容器已运行 | 环境提示：用 Docker Desktop 绝对路径或 `DOCKER_PATH`，见部署运行手册 FAQ |
 | L-06 | 看板 `todayLogs` 以初始化时刻为基准、且运行期会持续写入登录/操作日志 | 数值随初始化时刻与访问量浮动，其余计数固定 |
 | L-07 | 资产扫描、备份、监控指标、哈希链校验、脱敏试运行为简化实现 | 不接入真实扫描器 / 备份系统 / 监控采集 / 真实脱敏引擎（D-012） |
