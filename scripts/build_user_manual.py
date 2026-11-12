@@ -14,7 +14,7 @@ from docx.shared import Cm, Pt, RGBColor
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SHOT = os.path.join(ROOT, 'docs', 'screenshots')
-OUT = os.path.join(ROOT, 'docs', '用户操作手册.docx')
+OUT = os.path.join(ROOT, 'docs', '大数据安全治理与服务保障平台.docx')
 
 INK = RGBColor(0x1F, 0x3A, 0x5F)
 ACCENT = RGBColor(0x1F, 0x6F, 0xEB)
