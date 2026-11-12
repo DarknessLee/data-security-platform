@@ -61,7 +61,7 @@ async function main() {
   console.log('[dev] 1/4 检查 Docker 依赖 ...');
   runNode(resolve(ROOT, 'scripts/docker.mjs'), ['up']);
 
-  console.log('[dev] 2/4 初始化演示数据（可重复执行）...');
+  console.log('[dev] 2/4 初始化初始数据（可重复执行）...');
   const init = runNode(resolve(ROOT, 'api/db/init.mjs'));
   if (init !== 0) {
     console.error('[dev] 数据初始化失败，请检查 MySQL 容器是否就绪');
@@ -82,7 +82,7 @@ async function main() {
   console.log('==============================================');
   console.log(`  API 健康检查: ${apiOk ? '通过' : '未通过'}`);
   console.log(`  Web 访问地址: ${webOk ? 'http://127.0.0.1:5174' : '未就绪'}`);
-  console.log('  演示账号: admin / Admin@2026');
+  console.log('  初始账号: admin / Admin@2026');
   console.log('  按 Ctrl+C 停止全部服务');
   console.log('==============================================');
 }

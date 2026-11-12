@@ -23,7 +23,7 @@ export function isRedisReady(): boolean {
   return redisReady && redis.status === 'ready';
 }
 
-/** 带降级的缓存读取：Redis 不可用时直接执行 loader，不阻塞演示 */
+/** 带降级的缓存读取：Redis 不可用时直接执行 loader，不阻塞业务 */
 export async function cached<T>(key: string, ttlSeconds: number, loader: () => Promise<T>): Promise<T> {
   if (isRedisReady()) {
     try {

@@ -228,7 +228,7 @@ export function scanAsset(id: number) {
   return http.post<AssetScanResult>(`/assets/${id}/scan`);
 }
 
-/** 全局敏感度扫描（演示近似：统计扫描范围与评分建议变更数） */
+/** 全局敏感度扫描（简化实现：统计扫描范围与评分建议变更数） */
 export function scanAllAssets() {
   return http.post<GlobalScanResult>('/assets/scan');
 }

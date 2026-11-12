@@ -39,7 +39,7 @@
         </el-form>
 
         <div class="login-accounts">
-          <div v-for="acc in demoAccounts" :key="acc.username" class="login-account" @click="fill(acc)">
+          <div v-for="acc in initialAccounts" :key="acc.username" class="login-account" @click="fill(acc)">
             <b>{{ acc.label }}</b>{{ acc.username }} / {{ acc.password }}
           </div>
         </div>
@@ -71,7 +71,7 @@ const rules: FormRules = {
   password: [{ required: true, message: '请输入登录密码', trigger: 'blur' }],
 };
 
-const demoAccounts = [
+const initialAccounts = [
   { label: '超级管理员', username: 'admin', password: 'Admin@2026' },
   { label: '安全管理员', username: 'secadmin', password: 'Sec@2026' },
   { label: '合规专员', username: 'compliance', password: 'Comp@2026' },

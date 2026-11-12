@@ -1,5 +1,5 @@
 // 种子数据公共能力：确定性随机、日期、姓名/机构词库
-// 目标：每次重建演示态，计数与关键指标保持一致（可断言）
+// 目标：每次重建数据基线，计数与关键指标保持一致（可断言）
 
 /** 确定性伪随机（mulberry32），避免每次重建数据漂移 */
 export function createRng(seed = 20261107) {
@@ -40,7 +40,7 @@ export function fmtDateTime(d) {
   return `${fmtDate(d)} ${p(d.getHours())}:${p(d.getMinutes())}:${p(d.getSeconds())}`;
 }
 
-/** 以初始化时刻为演示基准时间，保证“最近 7 天”始终贴近当前时间 */
+/** 以初始化时刻为初始化基准时间，保证“最近 7 天”始终贴近当前时间 */
 export const BASE_TIME = new Date();
 
 export function daysAgo(n, hour = 9, minute = 0) {

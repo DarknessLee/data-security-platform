@@ -25,7 +25,7 @@ export const config = {
     password: process.env.REDIS_PASSWORD ?? 'DataSec_2026',
   },
   jwt: {
-    secret: process.env.JWT_SECRET ?? 'datasec-demo-secret-2026',
+    secret: process.env.JWT_SECRET ?? 'datasec-secret-2026',
     expiresIn: process.env.JWT_EXPIRES_IN ?? '12h',
   },
   webOrigin: process.env.WEB_ORIGIN ?? 'http://localhost:5174',

@@ -28,10 +28,10 @@ function main() {
   console.log('[setup] 2/4 启动 Docker 依赖（MySQL 13306 / Redis 16379）...');
   if (sh('node', [resolve(ROOT, 'scripts/docker.mjs'), 'up']) !== 0) process.exit(1);
 
-  console.log('[setup] 3/4 初始化数据库结构与演示数据...');
+  console.log('[setup] 3/4 初始化数据库结构与初始数据...');
   if (sh('node', [resolve(ROOT, 'api/db/init.mjs')]) !== 0) process.exit(1);
 
-  console.log('[setup] 4/4 校验演示数据...');
+  console.log('[setup] 4/4 校验初始数据...');
   if (sh('node', [resolve(ROOT, 'api/db/validate.mjs')]) !== 0) process.exit(1);
 
   console.log('\n[setup] 环境准备完成。执行 npm run dev 启动平台，访问 http://127.0.0.1:5174');

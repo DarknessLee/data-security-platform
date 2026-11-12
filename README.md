@@ -1,6 +1,6 @@
-# 大数据安全治理与服务保障平台（演示版）
+# 大数据安全治理与服务保障平台
 
-面向数据安全治理场景的一体化演示平台：把**数据资产治理、安全合规、智能风险监测、权限管控、安全审计、服务保障运维**六件事收进一个工作台，用一套可重放的演示数据串联"资产看得清、合规查得到、风险管得住、权限控得严、审计追得回、运维兜得底"的完整闭环。
+面向数据安全治理场景的一体化平台：把**数据资产治理、安全合规、智能风险监测、权限管控、安全审计、服务保障运维**六件事收进一个工作台，用一套可重放的初始数据串联"资产看得清、合规查得到、风险管得住、权限控得严、审计追得回、运维兜得底"的完整闭环。
 
 - 版本：V1.0.0　技术栈：Vue 3 + Express 5 + MySQL 8 + Redis 7　运行方式：本机进程 + Docker 依赖
 - 数据规模：27 张表、64 条资产、100 条合规检查、48 条风险事件、331 条审计日志、22 张工单、155 个监控点
@@ -27,7 +27,7 @@ npm install
 # 2) 启动 MySQL 13306 / Redis 16379
 npm run docker:up
 
-# 3) 建表 + 重放演示数据，并校验基线
+# 3) 建表 + 重放初始数据，并校验基线
 npm run db:init
 npm run db:validate
 
@@ -41,15 +41,15 @@ npm run dev
 | 接口 | http://127.0.0.1:8081/api |
 | 健康检查 | http://127.0.0.1:8081/api/health |
 
-演示账号（密码均为 `角色名@2026` 规则，见 [STATUS](docs/STATUS.md) 第三章）：`admin / Admin@2026`、`secadmin / Sec@2026`、`compliance / Comp@2026`、`steward / Steward@2026`、`auditor / Audit@2026`、`ops / Ops@2026`、`depthead / Dept@2026`、`analyst / Analyst@2026`。
+初始账号（密码均为 `角色名@2026` 规则，见 [STATUS](docs/STATUS.md) 第三章）：`admin / Admin@2026`、`secadmin / Sec@2026`、`compliance / Comp@2026`、`steward / Steward@2026`、`auditor / Audit@2026`、`ops / Ops@2026`、`depthead / Dept@2026`、`analyst / Analyst@2026`。
 
-> 完整环境要求、故障排查见 [部署运行手册](docs/部署运行.md)；演示前务必 `npm run db:reset` 恢复基线。
+> 完整环境要求、故障排查见 [部署运行手册](docs/部署运行.md)；验收前务必 `npm run db:reset` 恢复基线。
 
-## 演示路线（按角色）
+## 走查路线（按角色）
 
-| 顺序 | 角色 | 演示内容 | 预期现象 |
+| 顺序 | 角色 | 走查内容 | 预期现象 |
 | --- | --- | --- | --- |
-| 1 | admin 超级管理员 | 登录 → 看板 → 资产分级 → 合规检查执行 → 风险处置 → 权限调整 → 审计校验 → 运维工单 | 8 步 3–5 分钟走通，详见 [演示脚本](docs/演示脚本.md) |
+| 1 | admin 超级管理员 | 登录 → 看板 → 资产分级 → 合规检查执行 → 风险处置 → 权限调整 → 审计校验 → 运维工单 | 8 步 3–5 分钟走通，详见 [验收走查](docs/验收走查.md) |
 | 2 | steward 数据管理员 | 资产台账筛选、调级、生命周期轨迹 | 调级后分级分布变化并留痕 |
 | 3 | compliance 合规专员 | 规则库、执行检查、整改闭环 | 新批次生成，不通过项进入整改 |
 | 4 | secadmin 安全管理员 | 风险事件处置、规则命中 | 未闭环数下降，看板 20 秒内同步 |
@@ -154,7 +154,7 @@ data-security-platform/
 ├─ web/                     # Vue 3 + Vite 前端
 │  ├─ src/                  # api、components、layouts、router、stores、styles、utils、views（7 模块）
 │  └─ e2e/                  # Playwright 用例
-├─ docs/                    # 文档集（契约、状态、决策、矩阵、溯源、阶段报告、验收、演示、部署）
+├─ docs/                    # 文档集（契约、状态、决策、矩阵、溯源、阶段报告、验收、走查、部署）
 │  └─ screenshots/          # 交付截图
 ├─ scripts/                 # setup / docker / dev / test-api / verify / screenshots / check-docs
 ├─ docker-compose.yml       # MySQL 8.0（13306）+ Redis 7（16379）
@@ -175,7 +175,7 @@ data-security-platform/
 门禁链顺序（`npm run verify` 串行执行）：数据重建 → `db:validate` → `build` → `test:api` → `test:e2e` → `check:docs`。
 
 ```powershell
-npm run db:reset     # 重播种干净演示基线
+npm run db:reset     # 重播种干净初始基线
 npm run db:validate  # RESULT=PASS passed=69 failed=0
 npm run build        # RESULT=PASS（api tsc + web vue-tsc/vite build）
 npm run test:api     # RESULT=PASS passed=74 failed=0
@@ -196,12 +196,12 @@ npm run verify       # RESULT=PASS passed=7 failed=0 用时=174.6s（7 项全 PA
 | [需求溯源](docs/需求溯源.md) | 方案 3.1–3.6 功能点 → 接口/页面/表 |
 | [阶段报告](docs/阶段报告/) | M0 立项、M1 基座、M2 业务、M3 验收、M4 交付 |
 | [验收清单](docs/验收清单.md) | 五类检查点与通过标准 |
-| [演示脚本](docs/演示脚本.md) | 3–5 分钟 8 步演示路线 |
+| [验收走查](docs/验收走查.md) | 3–5 分钟 8 步走查路线 |
 | [部署运行](docs/部署运行.md) | 环境、起停、重建、验证、FAQ |
 
 ## 已知限制
 
-1. 资产扫描、监控采集、备份、脱敏、哈希链校验为**演示级近似**（[DECISIONS](docs/DECISIONS.md) D-012）。
-2. 单机单实例演示，不承诺 99.9% 可用率与并发指标（[PLAN-MATRIX](docs/PLAN-MATRIX.md) H-02）。
+1. 资产扫描、监控采集、备份、脱敏、哈希链校验为**简化实现**（[DECISIONS](docs/DECISIONS.md) D-012）。
+2. 单机单实例部署，不承诺 99.9% 可用率与并发指标（[PLAN-MATRIX](docs/PLAN-MATRIX.md) H-02）。
 3. K8s、多租户、真实脱敏引擎、SIEM、登记备案材料不在本期范围（D-015）。
 4. 前端 25 个视图与 25 张截图已齐备；`verify` 7/7 PASS 与提交号 92dcce6 已回填，进度以 [STATUS](docs/STATUS.md) 为准。

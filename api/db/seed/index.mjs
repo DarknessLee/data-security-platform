@@ -1,4 +1,4 @@
-// 演示态种子总入口：按依赖顺序重放，保证可重复、计数稳定
+// 数据基线种子总入口：按依赖顺序重放，保证可重复、计数稳定
 import { seedReference } from './reference.mjs';
 import { seedAssets } from './assets.mjs';
 import { seedCompliance } from './compliance.mjs';

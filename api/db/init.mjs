@@ -1,4 +1,4 @@
-// 演示态初始化：建库建表 → 重放种子 → 打印计数
+// 数据基线初始化：建库建表 → 重放种子 → 打印计数
 // 用法：node db/init.mjs
 import fs from 'node:fs';
 import path from 'node:path';
@@ -48,7 +48,7 @@ async function main() {
     const tables = ['sys_user', 'sys_role', 'sys_menu', 'sys_api_permission', 'asset_category', 'data_asset', 'asset_tag', 'asset_lifecycle',
       'compliance_rule', 'compliance_check', 'compliance_rectify', 'masking_rule', 'share_approval', 'risk_rule', 'risk_event',
       'audit_log', 'audit_report', 'service_ticket', 'ticket_trace', 'backup_record', 'ops_metric', 'notification', 'sys_config'];
-    console.log('[db] 演示态重建完成：');
+    console.log('[db] 数据基线重建完成：');
     for (const t of tables) {
       const [[row]] = await conn.query(`SELECT COUNT(*) AS c FROM ${t}`);
       console.log(`  - ${t}: ${row.c}`);

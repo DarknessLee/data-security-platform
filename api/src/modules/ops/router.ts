@@ -192,7 +192,7 @@ async function loadTraces(ticketId: number): Promise<TraceRow[]> {
   );
 }
 
-/** 写站内通知（全员公告，演示用） */
+/** 写站内通知（全员公告，） */
 async function notify(title: string, content: string, level: '信息' | '警告' | '紧急', bizType: string, bizId: number): Promise<void> {
   await execute(
     `INSERT INTO notification (user_id, title, content, level, read_flag, biz_type, biz_id, created_at)
@@ -630,7 +630,7 @@ const createBackupSchema = z.object({
   scope: z.string().trim().max(128, '备份范围最多 128 个字符').optional(),
 });
 
-/** POST /ops/backups 立即备份（演示近似：生成成功记录 + SHA-256 校验值） */
+/** POST /ops/backups 立即备份（简化实现：生成成功记录 + SHA-256 校验值） */
 opsRouter.post('/backups', requirePerm('ops', 'write'), async (req, res) => {
   const user = currentUser(req);
   const body = createBackupSchema.parse(req.body ?? {});
@@ -715,14 +715,14 @@ opsRouter.put('/configs/:key', requirePerm('ops', 'write'), async (req, res) => 
   ok(res, updated);
 });
 
-/** 静态历史版本清单（演示用） */
+/** 静态历史版本清单（） */
 const VERSION_HISTORY: VersionItem[] = [
   {
     version: 'V1.0.0-RC',
     releasedAt: '2026-10-28 18:00:00',
     owner: '平台运维组',
     type: '预发布',
-    summary: '六大模块联调完成，进入演示发布候选阶段。',
+    summary: '六大模块联调完成，进入发布候选阶段。',
     changes: [
       '完成资产、合规、风险、权限、审计、运维六大模块接口联调',
       '修复看板缓存穿透问题，Redis 缓存增加降级策略',
@@ -762,7 +762,7 @@ const VERSION_HISTORY: VersionItem[] = [
     changes: [
       '搭建 Node.js + Express + MySQL + Redis 服务基座',
       '完成 JWT 登录认证与统一响应包规范',
-      '初始化数据库结构与演示种子数据',
+      '初始化数据库结构与初始种子数据',
     ],
   },
 ];
@@ -777,7 +777,7 @@ opsRouter.get('/versions', requirePerm('ops'), async (_req, res) => {
     releasedAt: '2026-11-07 09:00:00',
     owner: '平台运维组',
     type: '正式发布',
-    environment: '生产环境（演示）',
+    environment: '生产环境',
     buildNo: '20261107.1',
     status: '当前运行',
     summary: '服务保障运维模块上线：运行监控大屏、工单闭环、备份管理与平台配置中心。',

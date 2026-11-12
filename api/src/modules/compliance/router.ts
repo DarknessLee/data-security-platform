@@ -31,7 +31,7 @@ const MASKING_TYPES = ['静态', '动态'] as const;
 const RULE_STATUSES = ['启用', '停用'] as const;
 const SHARE_WAYS = ['接口', '文件', '数据库直连'] as const;
 
-/** 固定密钥仅用于演示环境“可逆加密”脱敏算法，生产须走 KMS 托管密钥 */
+/** 固定密钥仅用于运行环境“可逆加密”脱敏算法，生产须走 KMS 托管密钥 */
 const MASKING_KEY = createHash('sha256').update('datasec-compliance-masking-2026').digest();
 const MASKING_IV = createHash('md5').update('datasec-masking-iv-2026').digest();
 

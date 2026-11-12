@@ -557,7 +557,7 @@ riskRouter.get('/trace', requirePerm('risk'), async (req, res) => {
     [row.username, row.ip],
   );
 
-  // 同 IP 其他事件：严格同 IP 优先，同时补充同 /24 网段事件（演示数据 IP 唯一时链路仍有可看内容）
+  // 同 IP 其他事件：严格同 IP 优先，同时补充同 /24 网段事件（初始数据 IP 唯一时链路仍有可看内容）
   let sameIp: Array<Record<string, unknown>> = [];
   if (row.ip) {
     const prefix = `${row.ip.split('.').slice(0, 3).join('.')}.%`;

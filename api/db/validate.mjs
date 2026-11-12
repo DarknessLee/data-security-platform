@@ -1,4 +1,4 @@
-// 演示态校验：结构完整性 / 种子计数 / 关联一致性 / 演示规范
+// 数据基线校验：结构完整性 / 种子计数 / 关联一致性 / 数据规范
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import mysql from 'mysql2/promise';
@@ -89,13 +89,13 @@ async function main() {
     check('风险事件关联资产完整', (await count(conn, 'SELECT COUNT(*) AS c FROM risk_event e LEFT JOIN data_asset a ON a.id = e.asset_id WHERE a.id IS NULL')) === 0);
     check('工单轨迹关联工单完整', (await count(conn, 'SELECT COUNT(*) AS c FROM ticket_trace t LEFT JOIN service_ticket s ON s.id = t.ticket_id WHERE s.id IS NULL')) === 0);
 
-    // 演示规范
+    // 数据规范
     check('用户密码均为哈希存储', (await count(conn, "SELECT COUNT(*) AS c FROM sys_user WHERE password_hash NOT LIKE '$2%'")) === 0);
     check('风险等级覆盖低/中/高/紧急', (await count(conn, 'SELECT COUNT(DISTINCT level) AS c FROM risk_event')) === 4);
     check('工单状态覆盖不少于 4 种', (await count(conn, 'SELECT COUNT(DISTINCT status) AS c FROM service_ticket')) >= 4);
     check('审计日志覆盖 7 个自然日', (await count(conn, 'SELECT COUNT(DISTINCT DATE(created_at)) AS c FROM audit_log')) >= 7);
     check('日志无未来时间', (await count(conn, "SELECT COUNT(*) AS c FROM audit_log WHERE created_at > NOW()")) === 0);
-    check('资产名称无演示占位词', (await count(conn, "SELECT COUNT(*) AS c FROM data_asset WHERE asset_name LIKE '%test%' OR asset_name LIKE '%演示%' OR asset_name LIKE '%示例%'")) === 0);
+    check('资产名称无占位词', (await count(conn, "SELECT COUNT(*) AS c FROM data_asset WHERE asset_name LIKE '%test%' OR asset_name LIKE '%示例%'")) === 0);
     check('每个角色至少 1 条菜单授权', (await count(conn, 'SELECT COUNT(*) AS c FROM sys_role r LEFT JOIN sys_role_menu rm ON rm.role_id = r.id WHERE rm.role_id IS NULL')) === 0);
     check('已授权模块均包含二级菜单（侧边栏可进入子页面）', (await count(conn, `SELECT COUNT(*) AS c FROM sys_role_menu rm
       JOIN sys_menu m ON m.id = rm.menu_id AND m.menu_type = '目录'

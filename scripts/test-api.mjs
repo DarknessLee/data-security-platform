@@ -174,7 +174,7 @@ async function main() {
     const res = await request('POST', '/assets', {
       token: TOKENS.admin,
       body: {
-        asset_name: '新增演示资产台账A',
+        asset_name: '新增资产台账A',
         category_id: base.category_id,
         dept_id: base.dept_id,
         source_system: '数据共享交换平台',
@@ -404,9 +404,9 @@ async function main() {
     const res = await request('POST', '/rbac/users', {
       token: TOKENS.admin,
       body: {
-        username: `demo_${Date.now().toString().slice(-6)}`,
+        username: `uat_${Date.now().toString().slice(-6)}`,
         real_name: '验证账号',
-        password: 'Demo@2026user',
+        password: 'Uat@2026user',
         dept_id: 1,
         job_title: '数据运营专员',
         roleCodes: ['ANALYST'],

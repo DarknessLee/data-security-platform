@@ -63,7 +63,7 @@ const DOCS = [
   {
     rel: 'docs/STATUS.md',
     name: '状态文档',
-    headings: ['## 一、当前阶段', '## 二、演示态重建与关键计数', '## 三、运行入口与演示账号', '## 四、下一步', '## 五、已知限制'],
+    headings: ['## 一、当前阶段', '## 二、数据基线重建与关键计数', '## 三、运行入口与初始账号', '## 四、下一步', '## 五、已知限制'],
   },
   {
     rel: 'docs/DECISIONS.md',
@@ -79,7 +79,7 @@ const DOCS = [
   {
     rel: 'docs/PLAN-MATRIX.md',
     name: '计划矩阵',
-    headings: ['## 一、90 工作日六阶段 → Demo 里程碑映射', '## 二、能力落地矩阵', '## 三、里程碑出口条件'],
+    headings: ['## 一、90 工作日六阶段 → 里程碑映射', '## 二、能力落地矩阵', '## 三、里程碑出口条件'],
     extra: (t) => has(t, ['已实现', '部分', '暂缓', '不做', 'M0', 'M1', 'M2', 'M3', 'M4']),
   },
   {
@@ -100,15 +100,15 @@ const DOCS = [
     extra: (t) => has(t, ['build', 'test:api', 'test:e2e', 'db:validate', 'check:docs']),
   },
   {
-    rel: 'docs/演示脚本.md',
-    name: '演示脚本',
-    headings: ['## 二、演示步骤', '## 三、演示注意事项'],
+    rel: 'docs/验收走查.md',
+    name: '验收走查',
+    headings: ['## 二、走查步骤', '## 三、走查注意事项'],
     extra: (t) => has(t, ['风险处置', '审计校验', '运维工单', 'admin']),
   },
   {
     rel: 'README.md',
     name: '项目说明',
-    headings: ['## 快速开始', '## 演示路线（按角色）', '## 目录结构', '## 技术栈'],
+    headings: ['## 快速开始', '## 走查路线（按角色）', '## 目录结构', '## 技术栈'],
     extra: (t) => has(t, ['docs/screenshots/', 'npm run dev', '25 张']),
   },
 ];

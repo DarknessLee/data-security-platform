@@ -160,7 +160,7 @@ async function nextAssetCode(): Promise<string> {
   return `DA-${year}-${String(seq).padStart(4, '0')}`;
 }
 
-// ============ 敏感度模型（演示近似：分级基线 + 标签/规模/活跃度/状态修正） ============
+// ============ 敏感度模型（简化实现：分级基线 + 标签/规模/活跃度/状态修正） ============
 
 const LEVEL_BASE: Record<string, number> = { 公开: 28, 内部: 48, 机密: 72, 绝密: 90 };
 
@@ -590,7 +590,7 @@ assetsRouter.get('/export', read, async (req, res) => {
   res.status(200).send(`\uFEFF${lines.join('\r\n')}`);
 });
 
-// ============ POST /scan（全局扫描，演示近似） ============
+// ============ POST /scan（全局扫描，简化实现） ============
 
 assetsRouter.post('/scan', write, async (req, res) => {
   const user = currentUser(req);

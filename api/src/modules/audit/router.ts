@@ -149,7 +149,7 @@ interface ChainCheck {
   checked: number;
 }
 
-/** 按 id 升序实时重建整条哈希链（演示近似：链由当前库内容实时重建） */
+/** 按 id 升序实时重建整条哈希链（简化实现：链由当前库内容实时重建） */
 function verifyChain(rows: ChainRow[]): ChainCheck {
   let prev = GENESIS_HASH;
   let lastId = 0;
