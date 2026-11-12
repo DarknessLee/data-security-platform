@@ -167,7 +167,7 @@ RBAC 四级：用户 - 角色 - 菜单/按钮 - 接口；数据范围 ALL / DEPT
 <img src="docs/screenshots/23-ops-backups.png" width="31%" />　<img src="docs/screenshots/24-ops-configs.png" width="31%" />　<img src="docs/screenshots/25-ops-versions.png" width="31%" />
 </div>
 
-> `docs/screenshots/` 目录下另外包含 6 张合规模块早期归档图（`compliance-*.png`），内容与 06～11 对应，可对照。
+
 
 ## 目录结构
 
