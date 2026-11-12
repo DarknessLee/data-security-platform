@@ -1,6 +1,6 @@
 # 项目状态（STATUS）
 
-> 平台：大数据安全治理与服务保障平台　版本：V1.0.0　更新时间：2026-11-07 10:49
+> 平台：大数据安全治理与服务保障平台　版本：V1.0.0　更新时间：2026-11-12 10:09
 
 ## 一、当前阶段
 
@@ -10,12 +10,12 @@
 | --- | --- |
 | 项目版本 | V1.0.0（`sys_config.platform.version`） |
 | 当前阶段 | M3 验收（全量 verify 7/7 PASS，待验收清单签字） |
-| 最新提交 | 6945d9c（统一对外表述口径）；前一提交 92dcce6（M2/M3 交付）、9a55663（M1 基座） |
+| 最新提交 | `d3be041`（README 项目介绍产品口径重写）；`6945d9c`（统一对外表述口径）；`92dcce6`（M2/M3 交付）、`9a55663`（M1 基座） |
 | 数据门禁 | `node api/db/validate.mjs` → `RESULT=PASS passed=69 failed=0`（第 69 项：已授权模块均包含二级菜单） |
 | 接口口径 | 已注册路由 **83 条**：业务接口 **81 条**（assets 12、compliance 18、risk 10、rbac 14、audit 8、ops 12、dashboard 1、auth 6）+ 系统接口 2 条（`/health`、`/meta`）；契约 V1.0 的 82 条验收基线已全部覆盖，清单见 `docs/接口契约.md` 第十一章（V1.2） |
 | 门禁链 | `db:reset → db:validate（69/69）→ build（RESULT=PASS）→ test:api（74/74）→ test:e2e（45/45，2.4 分钟）→ check:docs（76/76）→ verify（RESULT=PASS passed=7 failed=0 用时=174.6s）` |
 | 最近验收 | E2E 6 个 spec 共 45 条全 PASS（asset 8、audit 7、compliance 7、ops 8、rbac 8、risk 7）；截图 `RESULT=PASS count=25`；admin 登录返回 7 个顶级菜单（子项 0/3/6/3/4/2/5） |
-| 更新时间 | 2026-11-12 10:05 |
+| 更新时间 | 2026-11-12 10:09 |
 
 ## 二、数据基线重建与关键计数
 
