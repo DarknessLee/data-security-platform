@@ -1,6 +1,6 @@
 # 技术决策记录（DECISIONS / ADR）
 
-> 范围：大数据安全治理与服务保障平台（软著演示版）V1.0.0　记录人：docs-owner
+> 范围：大数据安全治理与服务保障平台（演示版）V1.0.0　记录人：docs-owner
 > 规则：一条决策一行；编号只增不改；改变既有决策时以新编号追加并在影响面注明替代关系。
 > 状态说明：所有决策均面向"可运行、可演示、可验收"的演示版；标注"暂缓/不做"的条目在 [PLAN-MATRIX.md](PLAN-MATRIX.md) 中同步。
 
@@ -22,7 +22,7 @@
 | D-012 | 2026-11-07 | 以下能力采用演示级近似并明确标注：资产扫描（模拟扫描 + 重算敏感度分）、备份（生成记录与校验和）、监控指标（155 点模拟采集）、审计不可篡改（SHA-256 哈希链校验）、脱敏（按规则生成掩码结果）、共享审批（单级审批） | 演示聚焦业务闭环与可交互，不接入真实扫描器 / 备份系统 / 监控采集 / 脱敏引擎 | `/assets/scan`、`/ops/backups`、`/ops/metrics`、`/audit/integrity`、`/compliance/masking/:id/test` |
 | D-013 | 2026-11-07 | 演示数据规范：真实业务词库命名，禁止 test/seed/临时字样；四类日志、四级分级、四种工单状态全覆盖；每角色至少 1 条菜单授权与 1 条接口授权（保证"允许"用例），数据范围构造"拒绝"用例 | 手册演示数据规范 + `api/db/validate.mjs` 的 8 条演示规范断言；保证每个角色都能演示允许与拒绝 | `api/db/seed/**`、`sys_role_menu`/`sys_role_api` 授权矩阵 |
 | D-014 | 2026-11-07 | 文档门禁：STATUS / DECISIONS / PLAN-MATRIX / 需求溯源 / 阶段报告 / 部署运行 / 验收清单 / 演示脚本 + `scripts/check-docs.mjs`；计数基线集中在 [STATUS.md](STATUS.md) 第二章，其它文档只引用不另立 | 手册要求"必需文档齐、链接与数字不矛盾"；基线集中可避免多文档同步漂移 | `docs/**`、`scripts/check-docs.mjs`、README 文档索引 |
-| D-015 | 2026-11-07 | 明确不做：K8s、多租户、真实脱敏引擎、SIEM 对接、软著登记材料、真实邮件/短信通道、Nginx/PM2 多实例、生产级 migration | 超出演示边界，投入产出比低；把资源集中在六大模块闭环与验收材料 | README、PLAN-MATRIX、验收清单的"暂缓/不做"口径 |
+| D-015 | 2026-11-07 | 明确不做：K8s、多租户、真实脱敏引擎、SIEM 对接、登记备案材料、真实邮件/短信通道、Nginx/PM2 多实例、生产级 migration | 超出演示边界，投入产出比低；把资源集中在六大模块闭环与验收材料 | README、PLAN-MATRIX、验收清单的"暂缓/不做"口径 |
 | D-016 | 2026-11-07 | 前端工程约定：Vite 代理 `/api → 8081`，令牌与用户信息存 `localStorage`（`datasec_token` / `datasec_user`），路由守卫按 `canRead` 拦截页面，Axios 统一处理 401 跳登录、403 提示；公共组件与布局归 Lead，模块负责人只写 `views/<module>`、`api/<module>.ts`、`e2e/<module>.spec.ts` | 6 位模块负责人并行开发，必须按目录划清写入边界，避免互相覆盖 | `web/src/api/client.ts`、`web/src/stores/auth.ts`、`web/src/router/index.ts`、`docs/前端开发约定.md` |
 | D-017 | 2026-11-07 | 看板数据范围过滤按查询别名拆两套拼接：`loadOverview(userId, plainScope, aliasedScope, scopeParams)`，无别名查询拼 `AND dept_id = ?` / `AND username = ?`，join 查询拼 `AND e.dept_id = ?`；缓存 key 分 `all` / `dept-<id>` / `self-<username>` | `risk_event` 等为独立查询、无 `e` 别名，统一拼 `e.dept_id` 会触发 `Unknown column 'e.dept_id'` 500；拆分后 DEPT/SELF 收敛正确且缓存互不串号 | `api/src/modules/dashboard/router.ts`、看板缓存 key；已验证 admin/steward/depthead/analyst/compliance/ops 全部 200，DEPT 仅见本部门 |
 | D-018 | 2026-11-07 | 角色菜单授权自动补齐模块子菜单：`reference.mjs` 用 `moduleChildMenuIds` 记录各模块二级菜单，授权顶级目录时按同 read/write 标记一并授权子菜单；`validate.mjs` 增加"已授权模块均包含二级菜单"检查 | 种子最初只授权 7 个顶级目录，侧边栏 `children` 为空、无法进入子页面；补齐后 admin 返回 7 个顶级菜单（子项 0/3/6/3/4/2/5），analyst 返回 5 个（0/3/6/3/5） | `api/db/seed/reference.mjs`、`sys_role_menu`、`api/db/validate.mjs` 第 69 项检查、侧边栏渲染 |
